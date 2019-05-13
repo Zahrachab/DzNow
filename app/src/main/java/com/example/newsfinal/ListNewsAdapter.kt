@@ -4,6 +4,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
+import com.squareup.picasso.Picasso
 
 
 class ListNewsAdapter(private val list: List<News>) : RecyclerView.Adapter<ListNewsAdapter.NewsViewHolder>() {
@@ -26,6 +27,7 @@ class ListNewsAdapter(private val list: List<News>) : RecyclerView.Adapter<ListN
         private var mTitleView: TextView? = null
         private var mDescView: TextView? = null
         private var mDateView: TextView? = null
+        private var mcategorieView: TextView? = null
         private var mImageView: ImageView? = null
 
 
@@ -33,6 +35,7 @@ class ListNewsAdapter(private val list: List<News>) : RecyclerView.Adapter<ListN
             mTitleView = itemView.findViewById(R.id.list_title)
             mDescView = itemView.findViewById(R.id.list_description)
             mDateView = itemView.findViewById(R.id.list_date)
+            mcategorieView = itemView.findViewById(R.id.list_categorie)
             mImageView = itemView.findViewById(R.id.list_image) as ImageView
         }
 
@@ -40,6 +43,9 @@ class ListNewsAdapter(private val list: List<News>) : RecyclerView.Adapter<ListN
             mTitleView?.text = news.title
             mDescView?.text = news.description
             mDateView?.text = news.date
+            mcategorieView?.text = news.categorie
+            mImageView?.setImageResource(R.drawable.imgnew1)
+            //Picasso.get().load("https://cdn.pixabay.com/photo/2013/10/02/23/03/dawn-190055_640.jpg").into(mImageView);
         }
     }
 }

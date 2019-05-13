@@ -1,6 +1,8 @@
 package com.example.newsfinal
 
+import android.support.v4.app.Fragment
 
-class MainActivity : SingleFragmentActivity() {
-    override fun createFragment() = ListNews.newInstance()
+
+class MainActivity : NewsActivity() {
+    override fun oncreateFragement()= TopNewsFragement.newInstance()
 }

@@ -1,8 +1,13 @@
 <resources>
-    <string name="app_name">NewsFinal</string>
+    <string name="app_name">News App</string>
+    <string name="nav_archive">Articles sauvgardées</string>
+    <string name="nav_addArticle">Publier article</string>
+    <string name="nav_home">Home</string>
+    <string name="item1">Pour Vous</string>
+    <string name="item2">Sport</string>
+    <string name="item3">Politique</string>
+    <string name="item4">Culture</string>
+    <string name="item5">International</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title">News</string>
-    <string name="description">sdkf,fcfjgf fjgkg gffkg jfdsfroeut fhtorgtf gjgthgyuthouhyg jhtihjogl jhg</string>
+
 </resources>

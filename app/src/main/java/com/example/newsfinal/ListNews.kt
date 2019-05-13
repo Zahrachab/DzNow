@@ -13,13 +13,14 @@ import kotlinx.android.synthetic.main.fragment_list_news.*
 
 class ListNews : Fragment() {
 
-    private val mNicolasCageMovies = listOf(
-        News("Raising Arizona", "loremidd djhferf jhrg jhgrig gtrhitg jgtihjt jgktjh jhtjht fgti", "28 Octobre 2019 "),
-        News("Vampire's Kiss", "loremidd djhferf jhrg jhgrig gtrhitg jgtihjt jgktjh jhtjht fgti","28 Octobre 2019 "),
-        News("Con Air", "loremidd djhferf jhrg jhgrig gtrhitg jgtihjt jgktjh jhtjht fgti","28 Octobre 2019 "),
-        News("Gone in 60 Seconds", "loremidd djhferf jhrg jhgrig gtrhitg jgtihjt jgktjh jhtjht fgti","28 Octobre 2019 "),
-        News("National Treasure", "loremidd djhferf jhrg jhgrig gtrhitg jgtihjt jgktjh jhtjht fgti","28 Octobre 2019 ")
+    private var listOfNews = listOf(
+        News("Nous ne ferons pas marche arrière", "Des centaines de milliers de manifestants dans les rues d’Alger Nous ne ferons pas marche arrière Marée humaine, hier, à Alger.La rue a mis dans son collimateur une nouvelle cible : le chef d’état-major et vice-ministre de la Défense, Ahmed Gaïd Salah. Pour la première fois depuis le 22 février dernier, les manifestants exigent son départ.", "22 Avril 2019", "imgNews1", "national"),
+        News("L’entrave à la liberté de circuler en…marche !", "Pour la quatrième fois consécutive, un impressionnant dispositif de sécurité, constitué d’escadrons antiémeutes de la Gendarmerie et de la Sûreté nationale, a été déployé dès jeudi à 13h pour empêcher les manifestants de rallier Alger","28 Octobre 2019 ", "imgNews1", "national"),
+        News("L’entrave à la liberté de circuler en…marche !", "Pour la quatrième fois consécutive, un impressionnant dispositif de sécurité, constitué d’escadrons antiémeutes de la Gendarmerie et de la Sûreté nationale, a été déployé dès jeudi à 13h pour empêcher les manifestants de rallier Alger","28 Octobre 2019 ", "imgNews1", "national"),
+        News("L’entrave à la liberté de circuler en…marche !", "Pour la quatrième fois consécutive, un impressionnant dispositif de sécurité, constitué d’escadrons antiémeutes de la Gendarmerie et de la Sûreté nationale, a été déployé dès jeudi à 13h pour empêcher les manifestants de rallier Alger","28 Octobre 2019 ", "imgNews1", "national"),
+        News("L’entrave à la liberté de circuler en…marche !", "Pour la quatrième fois consécutive, un impressionnant dispositif de sécurité, constitué d’escadrons antiémeutes de la Gendarmerie et de la Sûreté nationale, a été déployé dès jeudi à 13h pour empêcher les manifestants de rallier Alger","28 Octobre 2019 ", "imgNews1", "national")
     )
+
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -34,11 +35,17 @@ class ListNews : Fragment() {
             super.onViewCreated(view, savedInstanceState)
             list_recycler_view.apply {
                 layoutManager = LinearLayoutManager(activity)
-                adapter = ListNewsAdapter(mNicolasCageMovies)
+                adapter = ListNewsAdapter(listOfNews)
             }
         }
 
         companion object {
-            fun newInstance(): ListNews = ListNews()
+            fun newInstance(list: List<News>) :
+                ListNews {
+                val fragment = ListNews()
+                fragment.listOfNews = list
+                return fragment
+            }
         }
-    }
+
+}

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary2">@color/cgg_primary</color>
-    <color name="colorPrimaryDark2">@color/cgg_primary_dark</color>
+    <color name="colorPrimary">#FF473A</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#F4F5F2</color>
+    <color name="colorM">#A0866B</color>
     <color name="colorAccent2">@color/cgg_accent</color>
-    <color name="colorPrimary">@color/blg_primary</color>
-    <color name="colorPrimaryDark">@color/blg_primary_dark</color>
-    <color name="colorAccent">@color/blg_accent</color>
+    <color name="colorRedButton">#FF473A</color>
+    <color name="white">#ffffff</color>
+
 </resources>

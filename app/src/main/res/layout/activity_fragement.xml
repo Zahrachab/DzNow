@@ -1,6 +1,121 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:id="@+id/fragment_container"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-</FrameLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/navigation">
+
+        <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark"
+                android:background="?attr/colorAccent">
+
+            <ImageView android:layout_width="40dp" android:layout_height="40dp"
+                       android:src="@drawable/logo"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:height="20dp"
+                      android:layout_marginRight="@dimen/activity_horizontal_margin"
+                      android:textColor="@color/colorPrimary"
+                      android:layout_height="wrap_content"
+                      android:text="DZ_now"
+                      android:gravity="right"
+                      android:textStyle="bold"
+                      android:textAllCaps="false"/>
+        </android.support.v7.widget.Toolbar>
+
+
+
+        <android.support.design.widget.TabLayout
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                android:id="@+id/tablayout"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@color/colorPrimary"
+                app:tabSelectedTextColor="@android:color/white"
+                app:tabTextColor="@android:color/black" app:tabIndicatorColor="@color/colorAccent">
+
+            <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pour Vous"
+                    android:background="@color/colorPrimary"
+                    app:tabSelectedTextColor="@android:color/white"
+                    app:tabTextColor="@android:color/black"
+                    android:id="@+id/pour_vous_id"/>
+
+            <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sport"
+                    android:background="@color/colorPrimary"
+                    app:tabSelectedTextColor="@android:color/white"
+                    app:tabTextColor="@android:color/black" android:id="@+id/sport_id"/>
+
+            <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Politique"
+                    android:background="@color/colorPrimary"
+                    app:tabSelectedTextColor="@android:color/white"
+                    app:tabTextColor="@android:color/black" android:id="@+id/politique_id"/>
+
+            <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Culture"
+                    android:background="@color/colorPrimary"
+                    app:tabSelectedTextColor="@android:color/white"
+                    app:tabTextColor="@android:color/black" android:id="@+id/culture_id"/>
+
+            <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="International"
+                    android:background="@color/colorPrimary"
+                    app:tabSelectedTextColor="@android:color/white"
+                    app:tabTextColor="@android:color/black" android:id="@+id/international_id"/>
+        </android.support.design.widget.TabLayout>
+
+
+
+    </LinearLayout>
+
+    <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/fragment_top_news"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/navigation">
+    </FrameLayout>
+
+        <android.support.v4.view.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/fragment_top_news"
+                android:id="@+id/viewPager">
+
+        </android.support.v4.view.ViewPager>
+
+    <FrameLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentBottom="true"
+                 android:background="@color/colorAccent">
+        <android.support.design.widget.BottomNavigationView android:layout_width="match_parent"
+                                                            android:layout_height="40dp"
+                                                            app:menu="@menu/nav_items"
+                                                            android:id="@+id/bottomNavigationView3"/>
+    </FrameLayout>
+</RelativeLayout>

@@ -1,12 +1,14 @@
 package com.example.newsfinal
 
-
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.support.v7.widget.LinearLayoutManager
+import android.content.Intent
+import android.widget.Toast
+
 
 
 import kotlinx.android.synthetic.main.fragment_list_news.*
@@ -35,11 +37,22 @@ class ListNews : Fragment() {
             super.onViewCreated(view, savedInstanceState)
             list_recycler_view.apply {
                 layoutManager = LinearLayoutManager(activity)
-                adapter = ListNewsAdapter(listOfNews)
-            }
-        }
+                    adapter = ListNewsAdapter(listOfNews, { partItem : News  -> partItemClicked(partItem) })
 
-        companion object {
+                }
+            }
+
+    private fun partItemClicked(partItem : News) {
+        Toast.makeText(this.context, "Titre: ${partItem.title}", Toast.LENGTH_LONG).show()
+
+        // Launch second activity, pass part ID as string parameter
+        val showDetailActivityIntent = Intent(this.context, NewsDetail::class.java)
+        showDetailActivityIntent.putExtra(Intent.EXTRA_TEXT, partItem.title.toString())
+        startActivity(showDetailActivityIntent)
+    }
+
+
+    companion object {
             fun newInstance(list: List<News>) :
                 ListNews {
                 val fragment = ListNews()

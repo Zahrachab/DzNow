@@ -13,7 +13,7 @@ class Accueil : AppCompatActivity() {
 
 
         buttonStart.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, NewsActivity::class.java)
             startActivity(intent)
         }
     }

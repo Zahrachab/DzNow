@@ -1,11 +1,11 @@
 package com.example.newsfinal
 import android.support.v4.app.FragmentPagerAdapter
-import android.content.Context;
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import android.support.v4.view.ViewPager
 import com.google.gson.Gson
 
-class CategoriesAdapter(private val myContext: Context, fm: FragmentManager, internal var totalTabs: Int) : FragmentPagerAdapter(fm) {
+class CategoriesAdapter internal constructor(fm: FragmentManager) : FragmentPagerAdapter(fm){
 
     // this is for fragment tabs
     override fun getItem(position: Int): Fragment? {
@@ -23,7 +23,7 @@ class CategoriesAdapter(private val myContext: Context, fm: FragmentManager, int
                     {"title": "Mouloudia d’Alger : Casoni débarque à Alger", "description": "L’entraîneur du Mouloudia pour la nouvelle saison, le Français Bernard Casoni, et comme annoncé dans ces mêmes colonnes, est depuis hier à Alger où il séjournera durant quatre jours.Bernard Casoni, dont la mission à la tête du club algérois ne débutera officiellement qu’au mois de juin prochain, puisque l’équipe est toujours sous la coupe de Mohamed Mekhazeni pour ce qui reste de la saison en cours, aura néanmoins à régler certains détails inhérents à son récent engagement avec le MCA, avec notamment la paperasse nécessaire pour l’établissement de son permis de travail, mais surtout arrêter avec exactitude le programme de préparation d’intersaison, qui débutera à la mi-juin.","date": "15 Mai 2019", "image": "imgNews1", "categorie": "Sport"}
                    ]"""
                 val list: List<News> = gson.fromJson(newsString , Array<News>::class.java).toList()
-                return ListNews.newInstance(list)
+                return ViewPagerFragment.newInstance(list)
             }
             1 -> {
                 var gson = Gson()
@@ -38,7 +38,7 @@ class CategoriesAdapter(private val myContext: Context, fm: FragmentManager, int
                     {"title": "Mouloudia d’Alger : Casoni débarque à Alger", "description": "L’entraîneur du Mouloudia pour la nouvelle saison, le Français Bernard Casoni, et comme annoncé dans ces mêmes colonnes, est depuis hier à Alger où il séjournera durant quatre jours.Bernard Casoni, dont la mission à la tête du club algérois ne débutera officiellement qu’au mois de juin prochain, puisque l’équipe est toujours sous la coupe de Mohamed Mekhazeni pour ce qui reste de la saison en cours, aura néanmoins à régler certains détails inhérents à son récent engagement avec le MCA, avec notamment la paperasse nécessaire pour l’établissement de son permis de travail, mais surtout arrêter avec exactitude le programme de préparation d’intersaison, qui débutera à la mi-juin.","date": "15 Mai 2019", "image": "imgNews1", "categorie": "Sport"}
                    ]"""
                 val list: List<News> = gson.fromJson(newsString , Array<News>::class.java).toList()
-                return ListNews.newInstance(list)
+                return ViewPagerFragment.newInstance(list)
             }
             2 -> {
                 var gson = Gson()
@@ -53,7 +53,7 @@ class CategoriesAdapter(private val myContext: Context, fm: FragmentManager, int
                     {"title": "Mouloudia d’Alger : Casoni débarque à Alger", "description": "L’entraîneur du Mouloudia pour la nouvelle saison, le Français Bernard Casoni, et comme annoncé dans ces mêmes colonnes, est depuis hier à Alger où il séjournera durant quatre jours.Bernard Casoni, dont la mission à la tête du club algérois ne débutera officiellement qu’au mois de juin prochain, puisque l’équipe est toujours sous la coupe de Mohamed Mekhazeni pour ce qui reste de la saison en cours, aura néanmoins à régler certains détails inhérents à son récent engagement avec le MCA, avec notamment la paperasse nécessaire pour l’établissement de son permis de travail, mais surtout arrêter avec exactitude le programme de préparation d’intersaison, qui débutera à la mi-juin.","date": "15 Mai 2019", "image": "imgNews1", "categorie": "Sport"}
                    ]"""
                 val list: List<News> = gson.fromJson(newsString , Array<News>::class.java).toList()
-                return ListNews.newInstance(list)
+                return ViewPagerFragment.newInstance(list)
             }
             3 -> {
                 var gson = Gson()
@@ -68,7 +68,7 @@ class CategoriesAdapter(private val myContext: Context, fm: FragmentManager, int
                     {"title": "Mouloudia d’Alger : Casoni débarque à Alger", "description": "L’entraîneur du Mouloudia pour la nouvelle saison, le Français Bernard Casoni, et comme annoncé dans ces mêmes colonnes, est depuis hier à Alger où il séjournera durant quatre jours.Bernard Casoni, dont la mission à la tête du club algérois ne débutera officiellement qu’au mois de juin prochain, puisque l’équipe est toujours sous la coupe de Mohamed Mekhazeni pour ce qui reste de la saison en cours, aura néanmoins à régler certains détails inhérents à son récent engagement avec le MCA, avec notamment la paperasse nécessaire pour l’établissement de son permis de travail, mais surtout arrêter avec exactitude le programme de préparation d’intersaison, qui débutera à la mi-juin.","date": "15 Mai 2019", "image": "imgNews1", "categorie": "Sport"}
                    ]"""
                 val list: List<News> = gson.fromJson(newsString , Array<News>::class.java).toList()
-                return ListNews.newInstance(list)
+                return ViewPagerFragment.newInstance(list)
 
             }
             4 -> {
@@ -84,7 +84,7 @@ class CategoriesAdapter(private val myContext: Context, fm: FragmentManager, int
                     {"title": "Mouloudia d’Alger : Casoni débarque à Alger", "description": "L’entraîneur du Mouloudia pour la nouvelle saison, le Français Bernard Casoni, et comme annoncé dans ces mêmes colonnes, est depuis hier à Alger où il séjournera durant quatre jours.Bernard Casoni, dont la mission à la tête du club algérois ne débutera officiellement qu’au mois de juin prochain, puisque l’équipe est toujours sous la coupe de Mohamed Mekhazeni pour ce qui reste de la saison en cours, aura néanmoins à régler certains détails inhérents à son récent engagement avec le MCA, avec notamment la paperasse nécessaire pour l’établissement de son permis de travail, mais surtout arrêter avec exactitude le programme de préparation d’intersaison, qui débutera à la mi-juin.","date": "15 Mai 2019", "image": "imgNews1", "categorie": "Sport"}
                    ]"""
                 val list: List<News> = gson.fromJson(newsString , Array<News>::class.java).toList()
-                return ListNews.newInstance(list)
+                return ViewPagerFragment.newInstance(list)
             }
             else -> {
                 var gson = Gson()
@@ -99,13 +99,11 @@ class CategoriesAdapter(private val myContext: Context, fm: FragmentManager, int
                     {"title": "Mouloudia d’Alger : Casoni débarque à Alger", "description": "L’entraîneur du Mouloudia pour la nouvelle saison, le Français Bernard Casoni, et comme annoncé dans ces mêmes colonnes, est depuis hier à Alger où il séjournera durant quatre jours.Bernard Casoni, dont la mission à la tête du club algérois ne débutera officiellement qu’au mois de juin prochain, puisque l’équipe est toujours sous la coupe de Mohamed Mekhazeni pour ce qui reste de la saison en cours, aura néanmoins à régler certains détails inhérents à son récent engagement avec le MCA, avec notamment la paperasse nécessaire pour l’établissement de son permis de travail, mais surtout arrêter avec exactitude le programme de préparation d’intersaison, qui débutera à la mi-juin.","date": "15 Mai 2019", "image": "imgNews1", "categorie": "Sport"}
                    ]"""
                 val list: List<News> = gson.fromJson(newsString , Array<News>::class.java).toList()
-                return ListNews.newInstance(list)
+                return ViewPagerFragment.newInstance(list)
             }
         }
     }
 
     // this counts total number of tabs
-    override fun getCount(): Int {
-        return totalTabs
-    }
+    override fun getCount(): Int = 5
 }

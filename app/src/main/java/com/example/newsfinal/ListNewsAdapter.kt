@@ -8,7 +8,7 @@ import android.view.View
 
 
 
-class ListNewsAdapter(private val list: List<News>, val clickListener: (News) -> Unit) : RecyclerView.Adapter<ListNewsAdapter.NewsViewHolder>() {
+class ListNewsAdapter(private val list: List<News>?, val clickListener: (News) -> Unit) : RecyclerView.Adapter<ListNewsAdapter.NewsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -16,10 +16,10 @@ class ListNewsAdapter(private val list: List<News>, val clickListener: (News) ->
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        (holder as NewsViewHolder).bind(list[position], clickListener)
+        (holder as NewsViewHolder).bind(list!![position], clickListener)
     }
 
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount(): Int = list!!.size
 
 
 

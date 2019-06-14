@@ -42,7 +42,7 @@ class ListNews : Fragment() {
 
         // Launch second activity, pass part ID as string parameter
         val showDetailActivityIntent = Intent(this.context, NewsDetail::class.java)
-        showDetailActivityIntent.putExtra(Intent.EXTRA_TEXT, partItem.title.toString())
+        NewsDetail.article = partItem
         startActivity(showDetailActivityIntent)
     }
 

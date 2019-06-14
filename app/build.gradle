@@ -23,6 +23,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.jd-alexander:LikeButton:0.2.3'
     implementation 'com.beust:klaxon:5.0.1'
     implementation 'com.balysv:material-ripple:1.0.2'
     implementation 'com.squareup.picasso:picasso:2.71828'

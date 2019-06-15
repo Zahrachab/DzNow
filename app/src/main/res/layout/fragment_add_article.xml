@@ -19,7 +19,7 @@
                 android:text="@string/séléctionner_photo"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_dark"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSizeMoyen" />
 
         <EditText
                 android:id="@+id/editText3"
@@ -54,9 +54,9 @@
                     android:layout_width="325dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/sélectionnez_thématique"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"                    android:text="@string/sélectionnez_thématique"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/textSizeMoyen" />
 
             <Spinner
                     android:layout_width="match_parent"
@@ -71,10 +71,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorRedButton"
-                android:text="Partager"
+                android:text="@string/partager"
                 android:textColor="@android:color/background_light"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:textSize="@dimen/text_button" />
+                android:textSize="@dimen/textSizeMoyen" />
 
 </LinearLayout>

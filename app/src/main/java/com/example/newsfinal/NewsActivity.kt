@@ -30,17 +30,17 @@ class NewsActivity : AppCompatActivity() {
 
         val fm = supportFragmentManager
 
-       /* var fragment1 = fm.findFragmentById(R.id.fragment_changing)
+       var fragment1 = fm.findFragmentById(R.id.fragment_changing)
 
 
         // ensures fragments already created will not be created
         if (fragment1 == null) {
-            fragment1 = ListNews.newInstance(null)
+            fragment1 = NewsFragment()
             // create and commit a fragment transaction
             fm.beginTransaction()
                 .add(R.id.fragment_changing, fragment1)
                 .commit()
-        }*/
+        }
 
         bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigationView3)
 
@@ -100,7 +100,7 @@ class NewsActivity : AppCompatActivity() {
             return true
         }
         if (id == R.id.item2) {
-            setLocate("ar")
+            setLocate("fr")
             recreate()
             return true
         }

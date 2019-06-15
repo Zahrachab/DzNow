@@ -8,4 +8,5 @@
     <dimen name="left_margin_top_news">10dp</dimen>
     <dimen name="text_button">20dp</dimen>
     <dimen name="margin_right_toolbar">30dp</dimen>
+    <dimen name="textSizeMoyen">16sp</dimen>
 </resources>

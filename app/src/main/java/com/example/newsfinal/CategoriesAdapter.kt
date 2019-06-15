@@ -1,9 +1,13 @@
 package com.example.newsfinal
+
+import android.content.res.Resources
+import android.provider.Settings.Secure.getString
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.view.ViewPager
 import com.google.gson.Gson
+import com.example.newsfinal.R
 
 class CategoriesAdapter internal constructor(fm: FragmentManager) : FragmentPagerAdapter(fm){
 
@@ -27,7 +31,7 @@ class CategoriesAdapter internal constructor(fm: FragmentManager) : FragmentPage
             }
             1 -> {
                 var gson = Gson()
-                val newsString =  """[{"title": "Nous ne ferons pas marche arrière", "description": "Des centaines de milliers de manifestants dans les rues d’Alger Nous ne ferons pas marche arrière Marée humaine, hier, à Alger.La rue a mis dans son collimateur une nouvelle cible : le chef d’état-major et vice-ministre de la Défense, Ahmed Gaïd Salah. Pour la première fois depuis le 22 février dernier, les manifestants exigent son départ.","date": "22 Avril 2019", "image": "imgNews1", "categorie": "national", "author": "Salima Tlemsani"},
+                val newsString =  """[{"title": " arrière", "description": "Des centaines de milliers de manifestants dans les rues d’Alger Nous ne ferons pas marche arrière Marée humaine, hier, à Alger.La rue a mis dans son collimateur une nouvelle cible : le chef d’état-major et vice-ministre de la Défense, Ahmed Gaïd Salah. Pour la première fois depuis le 22 février dernier, les manifestants exigent son départ.","date": "22 Avril 2019", "image": "imgNews1", "categorie": "national", "author": "Salima Tlemsani"},
                     {"title": "Nous ne ferons pas marche arrière", "description": "Des centaines de milliers de manifestants dans les rues d’Alger Nous ne ferons pas marche arrière Marée humaine, hier, à Alger.La rue a mis dans son collimateur une nouvelle cible : le chef d’état-major et vice-ministre de la Défense, Ahmed Gaïd Salah. Pour la première fois depuis le 22 février dernier, les manifestants exigent son départ.","date": "22 Avril 2019", "image": "imgNews1", "categorie": "national", "author": "Salima Tlemsani"},
                     {"title": "Les étudiants ne lâchent pas prise", "description": "Alger, 14 mai 2019. 10h30. Sous un soleil printanier, le cortège composé de plusieurs dizaines d’étudiants de différentes universités s’ébranle depuis la Fac centrale en direction de la Grande-Poste.", "date": "15 Mai 2019 ", "image": "imgNews1","categorie": "national", "author": "Salima Tlemsani"},
                     {"title": "Crise vénézuélienne : Juan Guaido a-t-il perdu la partie ?", "description": "Depuis qu’il s’est déclaré président par intérim le 23 janvier, Juan Guaido n’a eu de cesse d’appeler les militaires à rompre les rangs et à tourner le dos au chef de l’Etat socialiste. Il comptait pour cela sur le soutien de dizaines de milliers de personnes, qui descendaient dans la rue à chacun de ses appels à manifester.Mais depuis le soulèvement manqué du 30 avril et l’offensive du pouvoir contre les «traîtres» à l’origine de la tentative de rébellion, le vent semble avoir tourné dans la rue. Samedi, ils n’étaient qu’entre 1500 et 2000 sur la place Alfredo Sadel, dans un quartier de l’est de Caracas majoritairement acquis à l’opposition.","date": "13 Mai 2019", "image": "imgNews1", "categorie": "international","author": "Salima Tlemsani"},
@@ -106,4 +110,5 @@ class CategoriesAdapter internal constructor(fm: FragmentManager) : FragmentPage
 
     // this counts total number of tabs
     override fun getCount(): Int = 5
+
 }

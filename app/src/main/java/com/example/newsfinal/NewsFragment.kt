@@ -26,6 +26,12 @@ class NewsFragment : Fragment() {
         viewPager.adapter = CategoriesAdapter(childFragmentManager)
 
         val tab = root.findViewById<TabLayout>(com.example.newsfinal.R.id.tablayout)
+        tab.setupWithViewPager(viewPager)
+        tab.getTabAt(0)!!.setText(getResources().getText(R.string.item1))
+        tab.getTabAt(1)!!.setText(getResources().getText(R.string.item2))
+        tab.getTabAt(2)!!.setText(getResources().getText(R.string.item3))
+        tab.getTabAt(3)!!.setText(getResources().getText(R.string.item4))
+        tab.getTabAt(4)!!.setText(getResources().getText(R.string.item5))
         tab.setTabGravity(TabLayout.GRAVITY_CENTER);
         tab.setTabMode(TabLayout.MODE_SCROLLABLE);
 

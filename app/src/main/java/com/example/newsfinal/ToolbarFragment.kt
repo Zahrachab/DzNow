@@ -1,43 +1,63 @@
 package com.example.newsfinal
 
-import android.content.Context
-import android.net.Uri
+
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.view.MenuInflater
+import android.widget.Toast
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [ToolbarFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [ToolbarFragment.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
+
+
 class ToolbarFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        retainInstance = true
+        setHasOptionsMenu(true)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_toolbar, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        var root = inflater.inflate(com.example.newsfinal.R.layout.fragment_toolbar, container, false)
+        setHasOptionsMenu(true)
+        return root
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.langue, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.item1 -> {
+                Toast.makeText(getActivity(), "Calls Icon Click", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+            R.id.item2 -> {
+                Toast.makeText(getActivity(), "Calls Icon Click", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+            R.id.item3 -> {
+                Toast.makeText(getActivity(), "Calls Icon Click", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+
+            else -> {return false}
+        }
+    }
+
 
     companion object {
         fun newInstance():ToolbarFragment = ToolbarFragment()

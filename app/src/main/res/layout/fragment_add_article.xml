@@ -1,14 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".AddArticleFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginEnd="8dp"
+              android:layout_marginStart="8dp"
+              android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment"/>
+        <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:clickable="true"
+                app:srcCompat="@android:drawable/ic_menu_gallery" />
 
-</FrameLayout>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:text="@string/séléctionner_photo"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+        <EditText
+                android:id="@+id/editText3"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@color/colorArticle"
+                android:ems="10"
+                android:gravity="start"
+                android:hint="@string/titre"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textAlignment="viewStart"
+                android:textStyle="bold" />
+
+        <EditText
+                android:id="@+id/editText4"
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                android:background="@color/colorArticle"
+                android:ems="10"
+                android:hint="@string/introduire_text"
+                android:inputType="textMultiLine"
+                android:textColor="@android:color/background_dark" />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="325dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/sélectionnez_thématique"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp" />
+
+            <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:entries="@array/themes"/>
+
+
+        </LinearLayout>
+
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorRedButton"
+                android:text="Partager"
+                android:textColor="@android:color/background_light"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:textSize="@dimen/text_button" />
+
+</LinearLayout>

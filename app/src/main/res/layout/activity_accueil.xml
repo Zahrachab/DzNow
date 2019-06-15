@@ -19,7 +19,7 @@
 
         <TextView android:layout_width="300dp"
                   android:layout_height="wrap_content"
-                  android:text="News you need to know"
+                  android:text="@string/title_accueil"
                   android:textSize="29dp"
                   android:layout_gravity="center"
                   android:textStyle="italic"
@@ -31,7 +31,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@color/colorRedButton"
-                android:text="Start Now"
+                android:text="@string/découvrez"
                 android:textSize="21dp"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/white"

@@ -4,7 +4,7 @@
 
     <item android:title="@string/nav_addArticle" android:icon="@drawable/baseline_add_photo_alternate_black_24dp"
           android:id="@+id/addArticleId"/>
-    <item android:title="Archive" android:icon="@drawable/baseline_archive_black_24dp"
+    <item android:title="@string/nav_archive" android:icon="@drawable/baseline_archive_black_24dp"
           android:id="@+id/archiveId"/>
 
 </menu>

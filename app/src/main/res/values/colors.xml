@@ -8,5 +8,6 @@
     <color name="colorRedButton">#FF473A</color>
     <color name="white">#ffffff</color>
     <color name="colorText">#000000</color>
+    <color name="colorArticle">#DCDCDC</color>
 
 </resources>

@@ -3,6 +3,7 @@ package com.example.newsfinal
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
+import android.os.AsyncTask
 import com.like.LikeButton
 import com.like.OnLikeListener
 import kotlinx.android.synthetic.main.activity_news_detail.*
@@ -10,6 +11,9 @@ import kotlinx.android.synthetic.main.activity_news_detail.view.*
 
 
 class NewsDetail : AppCompatActivity() {
+
+    private var db: AppDatabase? = null
+    private var newsDao: NewsDao? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +24,7 @@ class NewsDetail : AppCompatActivity() {
 
         likeButton.setOnLikeListener(object : OnLikeListener {
             override fun liked(likeButton: LikeButton) {
-
+                sauvegarder()
             }
 
             override fun unLiked(likeButton: LikeButton) {
@@ -42,4 +46,12 @@ class NewsDetail : AppCompatActivity() {
     companion object {
         var article : News? = null
     }
+
+    fun sauvegarder() {
+        db = AppDatabase.getDatabase(context = this)
+        with(newsDao){
+            this?.insert(article!!)
+        }
+    }
 }
+

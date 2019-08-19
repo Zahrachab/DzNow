@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.support.v7.widget.LinearLayoutManager
 import android.content.Intent
-import android.support.v4.app.FragmentManager
 import android.widget.Toast
 
 

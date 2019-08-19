@@ -9,4 +9,7 @@
     <dimen name="text_button">20dp</dimen>
     <dimen name="margin_right_toolbar">30dp</dimen>
     <dimen name="textSizeMoyen">16sp</dimen>
+    <dimen name="textTitle">15sp</dimen>
+    <dimen name="textDescription">13sp</dimen>
+    <dimen name="textDate">10sp</dimen>
 </resources>

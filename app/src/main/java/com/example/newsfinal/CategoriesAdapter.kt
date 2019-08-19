@@ -1,20 +1,17 @@
 package com.example.newsfinal
 
-import android.content.res.Resources
-import android.provider.Settings.Secure.getString
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.support.v4.view.ViewPager
 import com.google.gson.Gson
-import com.example.newsfinal.R
 
 class CategoriesAdapter internal constructor(fm: FragmentManager) : FragmentPagerAdapter(fm){
 
-    // this is for fragment tabs
+    // changer le fragement pour chaque tab dans le tablayout
     override fun getItem(position: Int): Fragment? {
         when (position) {
             0 -> {
+                // Toutes les informations
                 var gson = Gson()
                 val newsString =  """[{"title": "Nous ne ferons pas marche arrière", "description": "Des centaines de milliers de manifestants dans les rues d’Alger Nous ne ferons pas marche arrière Marée humaine, hier, à Alger.La rue a mis dans son collimateur une nouvelle cible : le chef d’état-major et vice-ministre de la Défense, Ahmed Gaïd Salah. Pour la première fois depuis le 22 février dernier, les manifestants exigent son départ.","date": "22 Avril 2019", "image": "imgNews1", "categorie": "national", "author": "Salima Tlemsani"},
                     {"title": "Nous ne ferons pas marche arrière", "description": "Des centaines de milliers de manifestants dans les rues d’Alger Nous ne ferons pas marche arrière Marée humaine, hier, à Alger.La rue a mis dans son collimateur une nouvelle cible : le chef d’état-major et vice-ministre de la Défense, Ahmed Gaïd Salah. Pour la première fois depuis le 22 février dernier, les manifestants exigent son départ.","date": "22 Avril 2019", "image": "imgNews1", "categorie": "national", "author": "Salima Tlemsani"},
@@ -30,6 +27,7 @@ class CategoriesAdapter internal constructor(fm: FragmentManager) : FragmentPage
                 return ViewPagerFragment.newInstance(list)
             }
             1 -> {
+                // Sport
                 var gson = Gson()
                 val newsString =  """[{"title": " arrière", "description": "Des centaines de milliers de manifestants dans les rues d’Alger Nous ne ferons pas marche arrière Marée humaine, hier, à Alger.La rue a mis dans son collimateur une nouvelle cible : le chef d’état-major et vice-ministre de la Défense, Ahmed Gaïd Salah. Pour la première fois depuis le 22 février dernier, les manifestants exigent son départ.","date": "22 Avril 2019", "image": "imgNews1", "categorie": "national", "author": "Salima Tlemsani"},
                     {"title": "Nous ne ferons pas marche arrière", "description": "Des centaines de milliers de manifestants dans les rues d’Alger Nous ne ferons pas marche arrière Marée humaine, hier, à Alger.La rue a mis dans son collimateur une nouvelle cible : le chef d’état-major et vice-ministre de la Défense, Ahmed Gaïd Salah. Pour la première fois depuis le 22 février dernier, les manifestants exigent son départ.","date": "22 Avril 2019", "image": "imgNews1", "categorie": "national", "author": "Salima Tlemsani"},
@@ -45,6 +43,7 @@ class CategoriesAdapter internal constructor(fm: FragmentManager) : FragmentPage
                 return ViewPagerFragment.newInstance(list)
             }
             2 -> {
+                // Politique
                 var gson = Gson()
                 val newsString =  """[{"title": "Nous ne ferons pas marche arrière", "description": "Des centaines de milliers de manifestants dans les rues d’Alger Nous ne ferons pas marche arrière Marée humaine, hier, à Alger.La rue a mis dans son collimateur une nouvelle cible : le chef d’état-major et vice-ministre de la Défense, Ahmed Gaïd Salah. Pour la première fois depuis le 22 février dernier, les manifestants exigent son départ.","date": "22 Avril 2019", "image": "imgNews1", "categorie": "national", "author": "Salima Tlemsani"},
                     {"title": "Nous ne ferons pas marche arrière", "description": "Des centaines de milliers de manifestants dans les rues d’Alger Nous ne ferons pas marche arrière Marée humaine, hier, à Alger.La rue a mis dans son collimateur une nouvelle cible : le chef d’état-major et vice-ministre de la Défense, Ahmed Gaïd Salah. Pour la première fois depuis le 22 février dernier, les manifestants exigent son départ.","date": "22 Avril 2019", "image": "imgNews1", "categorie": "national", "author": "Salima Tlemsani"},
@@ -60,6 +59,7 @@ class CategoriesAdapter internal constructor(fm: FragmentManager) : FragmentPage
                 return ViewPagerFragment.newInstance(list)
             }
             3 -> {
+                // Culture
                 var gson = Gson()
                 val newsString =  """[{"title": "Nous ne ferons pas marche arrière", "description": "Des centaines de milliers de manifestants dans les rues d’Alger Nous ne ferons pas marche arrière Marée humaine, hier, à Alger.La rue a mis dans son collimateur une nouvelle cible : le chef d’état-major et vice-ministre de la Défense, Ahmed Gaïd Salah. Pour la première fois depuis le 22 février dernier, les manifestants exigent son départ.","date": "22 Avril 2019", "image": "imgNews1", "categorie": "national", "author": "Salima Tlemsani"},
                     {"title": "Nous ne ferons pas marche arrière", "description": "Des centaines de milliers de manifestants dans les rues d’Alger Nous ne ferons pas marche arrière Marée humaine, hier, à Alger.La rue a mis dans son collimateur une nouvelle cible : le chef d’état-major et vice-ministre de la Défense, Ahmed Gaïd Salah. Pour la première fois depuis le 22 février dernier, les manifestants exigent son départ.","date": "22 Avril 2019", "image": "imgNews1", "categorie": "national", "author": "Salima Tlemsani"},
@@ -76,6 +76,7 @@ class CategoriesAdapter internal constructor(fm: FragmentManager) : FragmentPage
 
             }
             4 -> {
+                // International
                 var gson = Gson()
                 val newsString =  """[{"title": "Nous ne ferons pas marche arrière", "description": "Des centaines de milliers de manifestants dans les rues d’Alger Nous ne ferons pas marche arrière Marée humaine, hier, à Alger.La rue a mis dans son collimateur une nouvelle cible : le chef d’état-major et vice-ministre de la Défense, Ahmed Gaïd Salah. Pour la première fois depuis le 22 février dernier, les manifestants exigent son départ.","date": "22 Avril 2019", "image": "imgNews1", "categorie": "national", "author": "Salima Tlemsani"},
                     {"title": "Nous ne ferons pas marche arrière", "description": "Des centaines de milliers de manifestants dans les rues d’Alger Nous ne ferons pas marche arrière Marée humaine, hier, à Alger.La rue a mis dans son collimateur une nouvelle cible : le chef d’état-major et vice-ministre de la Défense, Ahmed Gaïd Salah. Pour la première fois depuis le 22 février dernier, les manifestants exigent son départ.","date": "22 Avril 2019", "image": "imgNews1", "categorie": "national", "author": "Salima Tlemsani"},

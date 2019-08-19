@@ -6,9 +6,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.navigation_fragement.*
-import android.support.design.widget.TabLayout
-import android.support.v4.view.ViewPager
 
 
 class NavigationFragement : Fragment() {

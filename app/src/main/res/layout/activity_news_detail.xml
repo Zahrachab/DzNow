@@ -87,7 +87,7 @@
                     android:layout_margin="10dp"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:behavior_overlapTop="64dp"
-                    app:cardBackgroundColor="#ffffff"
+                    app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="3dp"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
                     card_view:cardElevation="3sp"
@@ -102,7 +102,7 @@
                     <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/colorAccent">
+                            android:background="@color/white">
 
 
 

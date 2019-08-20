@@ -49,6 +49,7 @@ class ServiceVolley : ServiceInterface {
             @Throws(AuthFailureError::class)
             override fun getHeaders(): Map<String, String> {
                 val headers = HashMap<String, String>()
+                headers.put("Content-Type", "text/html; charset=utf-8'");
                 return headers
             }
         }

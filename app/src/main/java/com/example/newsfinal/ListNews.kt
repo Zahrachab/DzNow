@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.support.v7.widget.LinearLayoutManager
 import android.content.Intent
+import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import com.example.newsfinal.Interface.ServiceInterface
 import com.example.newsfinal.Services.ServiceVolley
@@ -35,7 +36,7 @@ class ListNews : Fragment() {
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
             list_recycler_view.apply {
-                layoutManager = LinearLayoutManager(activity)
+                layoutManager = LinearLayoutManager(activity) as RecyclerView.LayoutManager?
                 adapter = ListNewsAdapter(listOfNews, { partItem : News  -> partItemClicked(partItem) })
                 mAdapter = adapter as ListNewsAdapter
                 }

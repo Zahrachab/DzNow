@@ -37,7 +37,7 @@ class ServiceVolley : ServiceInterface {
 
 
     override fun get(path: String, completionHandler: (response: String?) -> Unit) {
-        val stringRequest = object : StringRequest(Method.GET, basePath + path,
+        val stringRequest = object : StringRequest(Method.GET, path,
             Response.Listener<String> { response ->
                 Log.d(TAG, "/post request OK! Response: $response")
                 completionHandler(response)

@@ -5,9 +5,10 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.activity_news_detail.*
 
 class ViewPagerFragment : Fragment() {
-    private var listOfNews : List<News>? = null
+    private var categorie: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,7 +17,7 @@ class ViewPagerFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root =inflater.inflate(com.example.newsfinal.R.layout.fragment_view_pager, container, false)
-        val childFragment = ListNews.newInstance(listOfNews)
+        val childFragment = ListNews.newInstance(categorie)
         val transaction = childFragmentManager.beginTransaction()
         transaction.replace(com.example.newsfinal.R.id.fragment_container_list, childFragment).commit()
         return root
@@ -30,9 +31,9 @@ class ViewPagerFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(list: List<News>): ViewPagerFragment {
+        fun newInstance(categorie: Int): ViewPagerFragment {
             val fragment = ViewPagerFragment()
-            fragment.listOfNews = list
+            fragment.categorie = categorie
             return fragment
         }
     }

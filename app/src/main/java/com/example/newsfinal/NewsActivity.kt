@@ -6,13 +6,10 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
-import com.google.gson.Gson
 import android.support.v7.widget.Toolbar
 import android.app.Activity
 import android.content.res.Configuration
 import android.os.AsyncTask
-import android.support.v4.app.Fragment
 import java.util.*
 
 
@@ -20,9 +17,6 @@ import java.util.*
 class NewsActivity : AppCompatActivity() {
     var bottomNavigation: BottomNavigationView? = null
     var mTopToolbar: Toolbar? = null
-
-    private var db: AppDatabase? = null
-    private var newsDao: NewsDao? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,12 +58,12 @@ class NewsActivity : AppCompatActivity() {
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.archiveId-> {
+                /*R.id.archiveId-> {
                     var fragment: ListNews = ListNews.newInstance(getArchivedNews())
                     supportFragmentManager.beginTransaction().replace(R.id.fragment_changing, fragment, fragment.javaClass.getSimpleName())
                         .commit()
                     return@OnNavigationItemSelectedListener true
-                }
+                }*/
             }
             false
         }
@@ -79,23 +73,6 @@ class NewsActivity : AppCompatActivity() {
     }
 
 
-
-    private fun getArchivedNews() {
-        class GetArchiverNews : AsyncTask<Void, Void, List<News>>() {
-
-            override fun doInBackground(vararg voids: Void): List<News> {
-                return AppDatabase
-                    .getDatabase(applicationContext)?.newsDao()?.getAll()!!
-            }
-
-            override fun onPostExecute(list: List<News>) {
-                super.onPostExecute(list)
-            }
-        }
-
-        val gt = GetArchiverNews()
-        gt.execute()
-    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

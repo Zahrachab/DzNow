@@ -12,9 +12,6 @@ import kotlinx.android.synthetic.main.activity_news_detail.view.*
 
 class NewsDetail : AppCompatActivity() {
 
-    private var db: AppDatabase? = null
-    private var newsDao: NewsDao? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +21,7 @@ class NewsDetail : AppCompatActivity() {
 
         likeButton.setOnLikeListener(object : OnLikeListener {
             override fun liked(likeButton: LikeButton) {
-                sauvegarder()
+
             }
 
             override fun unLiked(likeButton: LikeButton) {
@@ -47,11 +44,5 @@ class NewsDetail : AppCompatActivity() {
         var article : News? = null
     }
 
-    fun sauvegarder() {
-        db = AppDatabase.getDatabase(context = this)
-        with(newsDao){
-            this?.insert(article!!)
-        }
-    }
 }
 

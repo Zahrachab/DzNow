@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+
+            <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_height="40dp"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme"
+                    android:background="?attr/colorAccent">
+
+                <ImageView android:layout_width="40dp" android:layout_height="40dp"
+                           android:src="@drawable/logo"/>
+
+                <TextView android:layout_width="match_parent"
+                          android:height="20dp"
+                          android:layout_marginRight="@dimen/margin_right_toolbar"
+                          android:textColor="@color/colorPrimary"
+                          android:layout_height="wrap_content"
+                          android:text="@string/DzNow"
+                          android:gravity="right"
+                          android:textStyle="bold"
+                          android:textAllCaps="false"/>
+
+
+            </android.support.v7.widget.Toolbar>
+    <FrameLayout
+            android:id="@+id/fragment_changing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_below="@id/toolbar">
+    </FrameLayout>
+
+    <FrameLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentBottom="true"
+                 android:background="@color/colorAccent">
+        <android.support.design.widget.BottomNavigationView android:layout_width="match_parent"
+                                                            android:layout_height="40dp"
+                                                            app:menu="@menu/nav_items"
+                                                            android:id="@+id/bottomNavigationView3"/>
+    </FrameLayout>
+</RelativeLayout>

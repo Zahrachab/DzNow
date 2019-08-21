@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginEnd="8dp"
+              android:layout_marginStart="8dp"
+              android:orientation="vertical">
+
+        <ImageView
+                android:id="@+id/image_view"
+                android:scaleType="centerCrop"
+                app:srcCompat="@android:drawable/ic_menu_gallery"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"/>
+
+        <EditText
+                android:id="@+id/editText3"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@color/colorArticle"
+                android:ems="10"
+                android:gravity="start"
+                android:hint="@string/titre"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textAlignment="viewStart"
+                android:textStyle="bold" />
+
+        <EditText
+                android:id="@+id/editText4"
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                android:background="@color/colorArticle"
+                android:ems="10"
+                android:hint="@string/introduire_text"
+                android:inputType="textMultiLine"
+                android:textColor="@android:color/background_dark" />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="325dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"                    android:text="@string/sélectionnez_thématique"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="@dimen/textSizeMoyen" />
+
+            <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:entries="@array/themes"/>
+
+
+        </LinearLayout>
+
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorRedButton"
+                android:text="@string/partager"
+                android:textColor="@android:color/background_light"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:textSize="@dimen/textSizeMoyen" />
+
+</LinearLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="@dimen/activity_horizontal_margin_4"
+              android:layout_marginTop="@dimen/activity_horizontal_margin_2"
+              android:layout_marginLeft="@dimen/activity_horizontal_margin_4"
+              android:layout_marginRight="@dimen/activity_horizontal_margin_4"
+              android:background="@color/cgg_light"
+              app:elevation="0dp">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_horizontal_margin_4">
+
+        <TextView
+                android:id="@+id/list_categorie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginRight="@dimen/activity_horizontal_margin_2"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@id/list_title"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="National"
+                android:textSize="13sp" />
+
+
+        <ImageView
+                android:id="@+id/list_image"
+                android:layout_width="120dp"
+                android:layout_height="140dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/list_categorie"
+                android:adjustViewBounds="true" />
+
+        <TextView
+                android:text="L'algérie dit non "
+                android:id="@+id/list_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/activity_horizontal_margin_2"
+                android:layout_toStartOf="@id/list_image"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:textColor="@color/cgg_primary_text"
+                android:textSize="17sp"/>
+
+        <TextView
+                android:text="sfhd fhdgf gfjhf jfjhgh jfh jhghjg ghjgkhj hgjhkg ghjkhjkg kjkhj  ,jkhjkhj kj,hjklh jkh,kjh kfjhogh rthury yuityyt tryiutu ityity tjiytiy"
+                android:id="@+id/list_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/list_title"
+                android:layout_marginStart="@dimen/activity_horizontal_margin_2"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin_4"
+                android:layout_marginTop="@dimen/activity_horizontal_margin_4"
+                android:layout_toStartOf="@id/list_image"
+                android:ellipsize="end"
+                android:maxLines="5"
+                android:textColor="@color/cgg_secondary_text"
+                android:textSize="@dimen/textDescription" />
+
+        <TextView
+                android:text="12/09/2019"
+                android:id="@+id/list_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/list_description"
+                android:gravity="bottom"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@id/list_description"
+                android:layout_toStartOf="@id/list_image"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="@dimen/textDate" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

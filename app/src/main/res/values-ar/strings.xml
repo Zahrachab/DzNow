@@ -1,0 +1,37 @@
+<resources>
+    <string name="title_accueil">كل ما يجب أن تعرفوه</string>
+    <string name="app_name">تطبيق الأخبار</string>
+    <string name="nav_archive">الأخبار المسجلة</string>
+    <string name="nav_addArticle">نشر خبر</string>
+    <string name="nav_home">الرئيسية</string>
+    <string name="item1">لكم</string>
+    <string name="item2">الرياضة</string>
+    <string name="item3">السياسة</string>
+    <string name="item4">الثقافة</string>
+    <string name="item5">العالم</string>
+
+
+    <string-array name="themes">
+        <item>الرياضة</item>
+        <item>السياسة</item>
+        <item>الثقافة</item>
+        <item>العالم</item>
+    </string-array>
+
+    <string name="partage">انشر مقالة</string>
+
+    <string name="découvrez">اكتشف التطبيق</string>
+    <string name="DzNow">الجزائر الآن</string>
+    <string name="archive">Archive</string>
+    <string name="séléctionner_photo">اختر الصورة</string>
+    <string name="titre">العنوان</string>
+    <string name="introduire_text">ادخل النص هنا</string>
+    <string name="sélectionnez_thématique">الموضوع</string>
+    <string name="partager"> أنشر</string>
+    <string name="arabe">العربية</string>
+    <string name="Français">الفرنسية</string>
+    <string name="Langue">اللغة</string>
+
+
+
+</resources>

@@ -72,45 +72,6 @@ class ListNews : Fragment() {
         }
     }
 
-    fun getListNews(categorie: Int) {
-        val service: ServiceInterface = ServiceVolley()
-        var path = ""
-        if(categorie == 0)
-            path = "http://192.168.1.16/API-NEWS/newsGet.php"
-        else {
-            var ctg = ""
-            when (categorie) {
-                1 -> {
-                    ctg = "sport"
-                }
-                2 -> {
-                  ctg = "politique"
-                }
-                3 -> {
-                    ctg = "culture"
-                }
-                4 -> {
-                    ctg = "international"
-                }
-            }
-            path = "http://192.168.1.16/API-NEWS/newsGetCategorie.php?categorie=" + ctg
-        }
-        var list = listOf<News>()
-        service.get(path) { response ->
-            if(response != null && response != "error")
-            {
-                val gson = Gson()
-                val jsonArray = JSONArray(response)
-                if (jsonArray != null) {
-                    val list = gson.fromJson(jsonArray.toString(), Array<News>::class.java)
-                    if (list!= null && list?.size != 0) {
-                        listOfNews= list.toMutableList()
-                        mAdapter?.refreshAdapter(listOfNews as MutableList<News>)
-                    }
-                }
-            }
-        }
-    }
 
 
     private fun partItemClicked(partItem : News) {

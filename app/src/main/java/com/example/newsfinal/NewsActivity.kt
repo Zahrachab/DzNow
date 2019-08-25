@@ -9,7 +9,6 @@ import android.view.MenuItem
 import android.support.v7.widget.Toolbar
 import android.app.Activity
 import android.content.res.Configuration
-import android.os.AsyncTask
 import java.util.*
 
 

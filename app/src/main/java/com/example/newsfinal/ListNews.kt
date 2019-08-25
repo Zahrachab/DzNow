@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.support.v7.widget.LinearLayoutManager
 import android.content.Intent
+
 import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import com.example.newsfinal.Interface.ServiceInterface
@@ -47,7 +48,7 @@ class ListNews : Fragment() {
         val service: ServiceInterface = ServiceVolley()
         var path = ""
         if(categorie == 0)
-            path = "http://192.168.1.16/API-NEWS/newsGet.php"
+            path = "http://192.168.137.15/API-NEWS/newsGet.php"
         else {
             var ctg = ""
             when (categorie) {
@@ -64,7 +65,7 @@ class ListNews : Fragment() {
                     ctg = "international"
                 }
             }
-            path = "http://192.168.1.16/API-NEWS/newsGetCategorie.php?categorie=" + ctg
+            path = "http://192.168.137.15/API-NEWS/API-NEWS/newsGetCategorie.php?categorie=" + ctg
         }
         var list = listOf<News>()
         service.get(path) { response ->

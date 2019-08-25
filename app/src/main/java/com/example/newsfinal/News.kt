@@ -1,11 +1,38 @@
 package com.example.newsfinal
 
-import java.io.Serializable
+import android.arch.persistence.room.ColumnInfo
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
+
+
+@Entity
+ class News{
 
 
 
-data class News(
-                val id: Int? = null,
-                val title: String, val description: String, val date: String, val image: String, val categorie: String, val author: String) : Serializable {
+     @PrimaryKey(autoGenerate = true)
+     var id: Int = 0
+
+     @ColumnInfo(name = "title")
+var title: String = ""
+
+@ColumnInfo(name = "description")
+var description: String = ""
+
+
+@ColumnInfo(name = "image")
+var image: String =""
+
+@ColumnInfo(name = "auteur")
+var author: String = ""
+
+
+@ColumnInfo(name = "categorie")
+var categorie: String = ""
+
+
+@ColumnInfo(name = "date")
+var date: String = ""
+
 
 }

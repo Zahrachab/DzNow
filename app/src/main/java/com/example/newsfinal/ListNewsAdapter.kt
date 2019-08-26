@@ -5,7 +5,7 @@ import android.widget.TextView
 import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
 import android.view.View
-
+import com.bumptech.glide.Glide
 
 
 class ListNewsAdapter(private var list: List<News>?, val clickListener: (News) -> Unit) : RecyclerView.Adapter<ListNewsAdapter.NewsViewHolder>() {
@@ -50,13 +50,13 @@ class ListNewsAdapter(private var list: List<News>?, val clickListener: (News) -
 
         fun bind(news: News, clickListener: (News) -> Unit) {
             itemView.setOnClickListener { clickListener(news)}
-            mTitleView?.text = news.title
-            mDescView?.text = news.description
-            mDateView?.text = news.date
-            mcategorieView?.text = news.categorie
+            mTitleView?.text = news?.title
+            mDescView?.text = news?.description
+            mDateView?.text = news?.date
+            mcategorieView?.text = news?.categorie
+            Glide.with(mImageView!!.context).load(news?.image).into(mImageView!!)
 
-            mImageView?.setImageResource(R.drawable.imgnew1)
-            //Picasso.get().load("https://cdn.pixabay.com/photo/2013/10/02/23/03/dawn-190055_640.jpg").into(mImageView);
+            // mImageView?.setImageResource(R.drawable.imgnew1)
         }
     }
 

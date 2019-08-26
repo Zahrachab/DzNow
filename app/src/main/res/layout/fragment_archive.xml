@@ -1,34 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.RecyclerView
+        android:id="@+id/list_recycler_view_archived"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <FrameLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/fragment_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true">
-        </FrameLayout>
-
-        <FrameLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/fragment_list_news"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/fragment_toolbar">
-        </FrameLayout>
-
-
-    <FrameLayout android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_alignParentBottom="true"
-                 android:id="@+id/fragment_bottomNavigation"
-                 android:background="@color/colorAccent">
-        <android.support.design.widget.BottomNavigationView android:layout_width="match_parent"
-                                                            android:layout_height="40dp"
-                                                            app:menu="@menu/nav_items"
-                                                            android:id="@+id/bottomNavigationView3"/>
-    </FrameLayout>
-</RelativeLayout>
+</android.support.v7.widget.RecyclerView>

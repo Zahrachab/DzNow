@@ -58,12 +58,17 @@ class NewsActivity : AppCompatActivity() {
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
-                /*R.id.archiveId-> {
-                    var fragment: ListNews = ListNews.newInstance(getArchivedNews())
+                R.id.archiveId-> {
+                    var fragment  = SauvegaderFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.fragment_changing, fragment, fragment.javaClass.getSimpleName())
                         .commit()
                     return@OnNavigationItemSelectedListener true
-                }*/
+                    /*
+                    var fragment: ListNews = ListNews.newInstance(getArchivedNews())
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_changing, fragment, fragment.javaClass.getSimpleName())
+                        .commit()
+                    return@OnNavigationItemSelectedListener true*/
+                }
             }
             false
         }

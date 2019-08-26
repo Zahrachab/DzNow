@@ -15,7 +15,7 @@ abstract class NewsDB : RoomDatabase() {
         fun getInstance(context: Context): NewsDB? {
             if (instance == null) {
 
-                instance = Room.databaseBuilder(context.applicationContext,
+                instance = Room.databaseBuilder(context.getApplicationContext(),
                     NewsDB::class.java, "NewsDb").allowMainThreadQueries().build()
 
             }

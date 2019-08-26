@@ -4,8 +4,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
-import android.view.View
-
+import com.google.firebase.storage.FirebaseStorage
 
 
 class ListNewsAdapter(private var list: List<News>?, val clickListener: (News) -> Unit) : RecyclerView.Adapter<ListNewsAdapter.NewsViewHolder>() {
@@ -56,7 +55,19 @@ class ListNewsAdapter(private var list: List<News>?, val clickListener: (News) -
             mcategorieView?.text = news.categorie
 
             mImageView?.setImageResource(R.drawable.imgnew1)
+
+            // TODO ATTENTION. THIS CODE BLOCK IS NOT WORKING!
+
+            // WORKING CODE!
+            val storage = FirebaseStorage.getInstance()// Create a reference to a file from a Google Cloud Storage URI
+            val gsReference = storage.getReferenceFromUrl("gs://bucket/images/stars.jpg")
+
             //Picasso.get().load("https://cdn.pixabay.com/photo/2013/10/02/23/03/dawn-190055_640.jpg").into(mImageView);
+
+
+
+
+
         }
     }
 

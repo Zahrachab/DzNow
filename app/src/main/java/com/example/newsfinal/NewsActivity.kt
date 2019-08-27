@@ -98,6 +98,11 @@ class NewsActivity : AppCompatActivity() {
             recreate()
             return true
         }
+
+        if(id ==R.id.item4) {
+            intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
         return super.onOptionsItemSelected(item)
 
     }

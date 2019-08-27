@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="settingsTitle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="settingsInfos">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
 </resources>

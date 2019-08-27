@@ -2,12 +2,10 @@ package com.example.newsfinal
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.content.Intent
-import android.os.AsyncTask
+import com.example.newsfinal.Model.News
 import com.like.LikeButton
 import com.like.OnLikeListener
 import kotlinx.android.synthetic.main.activity_news_detail.*
-import kotlinx.android.synthetic.main.activity_news_detail.view.*
 
 
 class NewsDetail : AppCompatActivity() {

@@ -31,4 +31,7 @@
     <string name="arabe">Arabe</string>
     <string name="Français">Français</string>
     <string name="Langue">Langue</string>
+    <string name="paramètres">Paramètres</string>
+    <string name="sites_preferes">Sites préférées</string>
+    <string name="thematiques">Thématiques préférée</string>
 </resources>

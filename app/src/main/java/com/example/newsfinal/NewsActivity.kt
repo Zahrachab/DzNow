@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.support.v7.widget.Toolbar
 import android.app.Activity
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.AsyncTask
 import java.util.*
@@ -97,7 +98,6 @@ class NewsActivity : AppCompatActivity() {
             recreate()
             return true
         }
-
         return super.onOptionsItemSelected(item)
 
     }

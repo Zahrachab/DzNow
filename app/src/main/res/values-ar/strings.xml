@@ -32,6 +32,10 @@
     <string name="Français">الفرنسية</string>
     <string name="Langue">اللغة</string>
 
+    <string name="paramètres">Paramètres</string>
+    <string name="sites_preferes">Sites préférées</string>
+    <string name="thematiques">Thématiques préférée</string>
+
 
 
 </resources>

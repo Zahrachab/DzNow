@@ -4,8 +4,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
-import android.view.View
 import com.bumptech.glide.Glide
+import com.example.newsfinal.Model.News
 
 
 class ListNewsAdapter(private var list: List<News>?, val clickListener: (News) -> Unit) : RecyclerView.Adapter<ListNewsAdapter.NewsViewHolder>() {

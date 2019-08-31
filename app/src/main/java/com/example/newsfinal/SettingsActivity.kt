@@ -2,7 +2,6 @@ package com.example.newsfinal
 
 import android.Manifest
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -10,16 +9,11 @@ import android.support.v4.app.ActivityCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.telephony.TelephonyManager
-import android.widget.Checkable
 import android.widget.Toast
-import com.android.volley.AuthFailureError
-import com.android.volley.Response
-import com.android.volley.VolleyLog
-import com.android.volley.toolbox.JsonObjectRequest
 import com.example.newsfinal.Adapters.CustomAdapter
 import com.example.newsfinal.Interface.ServiceInterface
-import com.example.newsfinal.Model.News
 import com.example.newsfinal.Model.Site
+import com.example.newsfinal.Model.Thematique
 import com.example.newsfinal.Services.ServiceVolley
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_settings.*
@@ -30,12 +24,16 @@ class SettingsActivity : AppCompatActivity() {
 
     private var listSites : MutableList<Site> ?= arrayListOf()
     private var mSitesAdapter: CustomAdapter ?=  null
+    private var listThematiques : MutableList<Thematique> ?= arrayListOf()
+    private var mThemesAdapter: CustomAdapter ?=  null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        var recyclerView = findViewById<RecyclerView>(R.id.listSites).apply {
+
+
+       l_Sites.apply {
             // use this setting to improve performance if you know that changes
             // in content do not change the layout size of the RecyclerView
             setHasFixedSize(true)
@@ -48,6 +46,20 @@ class SettingsActivity : AppCompatActivity() {
             mSitesAdapter = adapter as CustomAdapter
         }
         getListSites()
+
+        l_Thematiques.apply {
+            // use this setting to improve performance if you know that changes
+            // in content do not change the layout size of the RecyclerView
+            setHasFixedSize(true)
+
+            // use a linear layout manager
+            layoutManager = LinearLayoutManager(context)
+
+            // specify an viewAdapter (see also next example)
+            adapter = CustomAdapter(listThematiques,  { partItem : com.example.newsfinal.Interface.Checkable -> partItemClicked(partItem as Thematique) })
+            mThemesAdapter = adapter as CustomAdapter
+        }
+        getListThematiques()
 
         validerChoix.setOnClickListener {
             var listSup = arrayListOf<String>()
@@ -67,7 +79,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
 
-    private fun partItemClicked(partItem : Site) {
+    private fun partItemClicked(partItem : com.example.newsfinal.Interface.Checkable) {
     }
 
 
@@ -92,6 +104,27 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+
+    fun getListThematiques() {
+        val service: ServiceInterface = ServiceVolley()
+        val imei = getUniqueIMEIId(this).toString()
+        var path = "thematiqueGet.php?imei=$imei"
+        var list = listOf<Site>()
+        service.get(path) { response ->
+            if(response != null && response != "error")
+            {
+                val gson = Gson()
+                val jsonArray = JSONArray(response)
+                if (jsonArray != null) {
+                    val list = gson.fromJson(jsonArray.toString(), Array<Thematique>::class.java)
+                    if (list!= null && list?.size != 0) {
+                        listThematiques = list.toMutableList()
+                        mThemesAdapter?.refreshAdapter(listThematiques as MutableList<Thematique>)
+                    }
+                }
+            }
+        }
+    }
 
     fun getUniqueIMEIId(context: Context): String {
         try {

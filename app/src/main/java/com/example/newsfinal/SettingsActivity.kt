@@ -66,14 +66,23 @@ class SettingsActivity : AppCompatActivity() {
             var listAdd = arrayListOf<String>()
            listSites?.forEach {
                if((it.preference!= 0) and (!it.checked)) {
-                   listSup.add(it.id)
                    deleteSitePreference(it)
                }
                else if ((it.preference ==0 ) and (it.checked)) {
-                   listAdd.add(it.id)
                    addSitePreference(it)
                }
            }
+
+
+
+            listThematiques?.forEach {
+                if((it.preference!= 0) and (!it.checked)) {
+                    deleteThematiquePreference(it)
+                }
+                else if ((it.preference ==0 ) and (it.checked)) {
+                    addThematiquePreference(it)
+                }
+            }
         }
 
         }
@@ -185,6 +194,37 @@ class SettingsActivity : AppCompatActivity() {
         service.post(path, params) { response ->
             Toast.makeText(this, "Modification avec succès", Toast.LENGTH_SHORT).show()
             site.preference = 0
+        }
+    }
+
+
+
+    fun addThematiquePreference(theme: Thematique) {
+        val path: String = "preferenceThemePost.php"
+
+        val params = JSONObject()
+        params.put("idThematique", theme.id)
+        params.put("imei", getUniqueIMEIId(this))
+
+        val service: ServiceInterface = ServiceVolley()
+        service.post(path, params) { response ->
+            Toast.makeText(this, "Modification avec succès", Toast.LENGTH_SHORT).show()
+            theme.preference = 1
+        }
+    }
+
+
+    fun deleteThematiquePreference(theme: Thematique) {
+        val path: String = "preferenceThemeDelete.php"
+
+        val params = JSONObject()
+        params.put("idThematique", theme.id)
+        params.put("imei", getUniqueIMEIId(this))
+
+        val service: ServiceInterface = ServiceVolley()
+        service.post(path, params) { response ->
+            Toast.makeText(this, "Modification avec succès", Toast.LENGTH_SHORT).show()
+            theme.preference = 0
         }
     }
 

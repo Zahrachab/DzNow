@@ -1,6 +1,10 @@
 package com.example.newsfinal.Model
 
+import com.example.newsfinal.Interface.Checkable
+import com.google.gson.annotations.SerializedName
+
 class Thematique  (val id : String = "",
-                   val nom: String = "",  //nom du site
-                   var Checked: Boolean = false) {
+                   override var preference : Int = 0,
+                   override var checked: Boolean = false,
+                   override var designation: String) : Checkable {
 }

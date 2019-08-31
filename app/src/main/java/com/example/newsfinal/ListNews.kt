@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.widget.Toast
+import com.example.newsfinal.Adapters.ListNewsAdapter
 import com.example.newsfinal.Interface.ServiceInterface
 import com.example.newsfinal.Model.News
 import com.example.newsfinal.Services.ServiceVolley
@@ -21,7 +22,7 @@ import org.json.JSONArray
 class ListNews : Fragment() {
 
     private var listOfNews : List<News>? = listOf()
-    private var mAdapter: ListNewsAdapter ?= null
+    private var mAdapter: ListNewsAdapter?= null
     private var categorie: Int = 0
 
         override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +39,9 @@ class ListNews : Fragment() {
             super.onViewCreated(view, savedInstanceState)
             list_recycler_view.apply {
                 layoutManager = LinearLayoutManager(activity) as RecyclerView.LayoutManager?
-                adapter = ListNewsAdapter(listOfNews, { partItem : News -> partItemClicked(partItem) })
+                adapter = ListNewsAdapter(
+                    listOfNews,
+                    { partItem: News -> partItemClicked(partItem) })
                 mAdapter = adapter as ListNewsAdapter
                 }
             getListNews(categorie)
@@ -48,7 +51,7 @@ class ListNews : Fragment() {
         val service: ServiceInterface = ServiceVolley()
         var path = ""
         if(categorie == 0)
-            path = "http://192.168.1.16/API-NEWS/newsGet.php"
+            path = "newsGet.php"
         else {
             var ctg = ""
             when (categorie) {
@@ -65,7 +68,7 @@ class ListNews : Fragment() {
                     ctg = "international"
                 }
             }
-            path = "http://192.168.1.16/API-NEWS/newsGetCategorie.php?categorie=" + ctg
+            path = "newsGetCategorie.php?categorie=" + ctg
         }
         var list = listOf<News>()
         service.get(path) { response ->

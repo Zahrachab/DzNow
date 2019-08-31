@@ -9,7 +9,7 @@
     </style>
 
     <style name="settingsTitle">
-        <item name="android:textSize">16dp</item>
+        <item name="android:textSize">18dp</item>
         <item name="android:textColor">@color/dark_gray</item>
         <item name="android:textStyle">bold</item>
     </style>

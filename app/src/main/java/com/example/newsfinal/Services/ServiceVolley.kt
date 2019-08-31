@@ -12,7 +12,7 @@ import org.json.JSONObject
 
 class ServiceVolley : ServiceInterface {
     val TAG = ServiceVolley::class.java.simpleName
-    val basePath = "https://your/backend/api/"
+    val basePath = "http://192.168.1.16/API-NEWS/api/"
 
     override fun post(path: String, params: JSONObject, completionHandler: (response: JSONObject?) -> Unit) {
         val jsonObjReq = object : JsonObjectRequest(Method.POST, basePath + path, params,
@@ -22,7 +22,6 @@ class ServiceVolley : ServiceInterface {
             },
             Response.ErrorListener { error ->
                 VolleyLog.e(TAG, "/post request fail! Error: ${error.message}")
-                completionHandler(null)
             }) {
             @Throws(AuthFailureError::class)
             override fun getHeaders(): Map<String, String> {
@@ -37,7 +36,7 @@ class ServiceVolley : ServiceInterface {
 
 
     override fun get(path: String, completionHandler: (response: String?) -> Unit) {
-        val stringRequest = object : StringRequest(Method.GET, path,
+        val stringRequest = object : StringRequest(Method.GET, basePath + path,
             Response.Listener<String> { response ->
                 Log.d(TAG, "/post request OK! Response: $response")
                 completionHandler(response)

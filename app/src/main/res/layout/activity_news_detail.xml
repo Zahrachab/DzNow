@@ -14,7 +14,7 @@
                 android:theme="?attr/actionBarTheme"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark"
-                android:background="?attr/colorAccent">
+                android:background="@android:color/white">
 
             <ImageView android:layout_width="50dp"
                        android:layout_height="50dp"
@@ -128,9 +128,9 @@
                                         android:layout_height="wrap_content"
                                         app:icon_type="heart"
                                         app:circle_start_color="@color/colorPrimary"
-                                        app:dots_primary_color="@color/colorAccent"
+                                        app:dots_primary_color="@android:color/white"
                                         app:dots_secondary_color="@color/colorPrimary"
-                                        app:circle_end_color="@color/colorAccent"
+                                        app:circle_end_color="@android:color/white"
                                         app:icon_size="25dp"
                                         app:liked="false"
                                         app:anim_scale_factor="2"

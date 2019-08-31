@@ -1,4 +1,4 @@
-package com.example.newsfinal
+package com.example.newsfinal.Adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.example.newsfinal.Model.News
+import com.example.newsfinal.R
 
 
 class ListNewsAdapter(private var list: List<News>?, val clickListener: (News) -> Unit) : RecyclerView.Adapter<ListNewsAdapter.NewsViewHolder>() {

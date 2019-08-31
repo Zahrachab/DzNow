@@ -1,3 +1,4 @@
+
 package com.example.newsfinal
 
 import android.content.Intent
@@ -11,37 +12,9 @@ class Accueil : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_accueil)
 
-        // click *
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         buttonStart.setOnClickListener {
             val intent = Intent(this, NewsActivity::class.java)
             startActivity(intent)
         }
     }
 }
-

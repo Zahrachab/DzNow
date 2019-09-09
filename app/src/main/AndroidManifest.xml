@@ -15,19 +15,26 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".SettingsActivity">
+        <activity android:name=".View.SettingsActivity">
         </activity>
-        <activity android:name=".NewsDetail">
+        <activity android:name=".View.NewsDetail">
         </activity>
-        <activity android:name=".Accueil">
+        <activity android:name=".View.Accueil">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".NewsActivity">
+        <activity android:name=".View.NewsActivity">
         </activity>
+
+        <service
+                android:name=".Services.MessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

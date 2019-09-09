@@ -1,4 +1,4 @@
-package com.example.newsfinal
+package com.example.newsfinal.View
 
 import android.Manifest
 import android.content.Context
@@ -7,13 +7,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.telephony.TelephonyManager
 import android.widget.Toast
 import com.example.newsfinal.Adapters.CustomAdapter
 import com.example.newsfinal.Interface.ServiceInterface
 import com.example.newsfinal.Model.Site
 import com.example.newsfinal.Model.Thematique
+import com.example.newsfinal.R
 import com.example.newsfinal.Services.ServiceVolley
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_settings.*

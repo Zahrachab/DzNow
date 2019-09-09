@@ -1,4 +1,4 @@
-package com.example.newsfinal
+package com.example.newsfinal.View
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.example.newsfinal.Adapters.ListNewsAdapter
 import com.example.newsfinal.Interface.ServiceInterface
 import com.example.newsfinal.Model.News
+import com.example.newsfinal.R
 import com.example.newsfinal.Services.ServiceVolley
 import com.google.gson.Gson
 
@@ -100,7 +101,7 @@ class ListNews : Fragment() {
 
     companion object {
             fun newInstance(categorie: Int) :
-                ListNews {
+                    ListNews {
                 val fragment = ListNews()
                 fragment.categorie = categorie
                 return fragment

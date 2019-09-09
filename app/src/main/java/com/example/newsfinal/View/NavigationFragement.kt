@@ -1,4 +1,4 @@
-package com.example.newsfinal
+package com.example.newsfinal.View
 
 
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.newsfinal.R
 
 
 class NavigationFragement : Fragment() {
@@ -25,6 +26,7 @@ class NavigationFragement : Fragment() {
     }
 
     companion object {
-        fun newInstance(): NavigationFragement = NavigationFragement()
+        fun newInstance(): NavigationFragement =
+            NavigationFragement()
     }
 }

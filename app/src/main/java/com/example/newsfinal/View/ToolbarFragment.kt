@@ -1,4 +1,4 @@
-package com.example.newsfinal
+package com.example.newsfinal.View
 
 
 import android.os.Bundle
@@ -6,9 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.*
 import android.view.MenuInflater
 import android.widget.Toast
-
-
-
+import com.example.newsfinal.R
 
 
 class ToolbarFragment : Fragment() {
@@ -20,7 +18,7 @@ class ToolbarFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var root = inflater.inflate(com.example.newsfinal.R.layout.fragment_toolbar, container, false)
+        var root = inflater.inflate(R.layout.fragment_toolbar, container, false)
         setHasOptionsMenu(true)
         return root
     }
@@ -60,6 +58,6 @@ class ToolbarFragment : Fragment() {
 
 
     companion object {
-        fun newInstance():ToolbarFragment = ToolbarFragment()
+        fun newInstance(): ToolbarFragment = ToolbarFragment()
     }
 }

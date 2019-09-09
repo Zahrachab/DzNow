@@ -1,4 +1,4 @@
-package com.example.newsfinal
+package com.example.newsfinal.View
 
 import android.app.Activity
 import android.os.Bundle
@@ -12,8 +12,6 @@ import com.example.newsfinal.R
 import kotlinx.android.synthetic.main.fragment_add_article.*;
 import android.content.Intent
 import android.support.v4.app.ActivityCompat
-import android.support.v7.widget.ButtonBarLayout
-import android.widget.Button
 import android.widget.ImageView
 
 

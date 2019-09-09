@@ -1,4 +1,4 @@
-package com.example.newsfinal
+package com.example.newsfinal.View
 
 import android.content.Context
 import android.os.Bundle
@@ -10,7 +10,7 @@ import android.support.v7.widget.Toolbar
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
-import android.os.AsyncTask
+import com.example.newsfinal.R
 import java.util.*
 
 
@@ -47,13 +47,13 @@ class NewsActivity : AppCompatActivity() {
 
         val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.homeId-> {
+                R.id.homeId -> {
                     val fragment = NewsFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.fragment_changing, fragment, fragment.javaClass.getSimpleName())
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.addArticleId-> {
+                R.id.addArticleId -> {
                     val fragment = AddArticleFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.fragment_changing, fragment, fragment.javaClass.getSimpleName())
                         .commit()
@@ -99,7 +99,7 @@ class NewsActivity : AppCompatActivity() {
             return true
         }
 
-        if(id ==R.id.item4) {
+        if(id == R.id.item4) {
             intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }

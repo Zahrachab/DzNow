@@ -1,8 +1,9 @@
-package com.example.newsfinal
+package com.example.newsfinal.View
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.newsfinal.Model.News
+import com.example.newsfinal.R
 import com.like.LikeButton
 import com.like.OnLikeListener
 import kotlinx.android.synthetic.main.activity_news_detail.*

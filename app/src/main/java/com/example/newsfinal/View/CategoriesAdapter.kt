@@ -1,12 +1,8 @@
-package com.example.newsfinal
+package com.example.newsfinal.View
 
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import com.example.newsfinal.Interface.ServiceInterface
-import com.example.newsfinal.Services.ServiceVolley
-import com.example.newsfinal.Singleton.BackendVolley
-import com.google.gson.Gson
 
 class CategoriesAdapter internal constructor(fm: FragmentManager) : FragmentPagerAdapter(fm){
 

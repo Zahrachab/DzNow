@@ -75,7 +75,7 @@ class NewsDetail : AppCompatActivity() {
 
             }
 
-            val chooserIntent = Intent.createChooser(targetedShareIntents.removeAt(0), "Select app to share")
+            val chooserIntent = Intent.createChooser(targetedShareIntents.removeAt(0), "Sélectionner une application")
             chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, targetedShareIntents.toTypedArray<Parcelable>())
             startActivity(chooserIntent)
         }

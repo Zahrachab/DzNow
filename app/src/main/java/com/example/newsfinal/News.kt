@@ -35,4 +35,8 @@ var categorie: String = ""
 var date: String = ""
 
 
+    @ColumnInfo(name = "url")
+    var url: String = ""
+
+
 }

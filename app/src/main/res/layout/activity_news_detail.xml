@@ -198,6 +198,14 @@
                                         android:textColor="@color/colorText"
                                         android:textStyle="bold"/>
 
+                                <TextView
+                                        android:id="@+id/txt_url"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:textColor="@color/colorText"
+                                        android:textStyle="bold"/>
+
 
                             </RelativeLayout>
 

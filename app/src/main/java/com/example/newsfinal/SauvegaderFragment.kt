@@ -27,10 +27,12 @@ class SauvegaderFragment : Fragment() {
     private var mAdapter: ListNewsAdapter ?= null
     private var db: NewsDB? = null
     private var dao: NewsDao? = null
-    private var arts: List<News>? = null
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         retainInstance = true
     }
 
@@ -51,38 +53,28 @@ class SauvegaderFragment : Fragment() {
             mAdapter = adapter as ListNewsAdapter
         }
 
+
+
+
         getListNews()
     }
 
 
 
 
-    fun getListNews() {
+    private fun getListNews() {
 
 
-
-       db = context?.let { NewsDB.getInstance(it) }
+        db = context?.let { NewsDB.getInstance(it) }
        dao = db?.articleDao()
-        arts = dao?.getNews()
-
-
-        if (arts != null) {
-
-            context?.let { AppTools.showToast(it, "Données Chargées") }
-
-
-            val gson = Gson()
-
-            val jsonArray = JSONArray(arts)
-            if (jsonArray != null) {
-                val list = gson.fromJson(jsonArray.toString(), Array<News>::class.java)
-                if (list != null && list?.size != 0) {
+        var list: List<News> = dao?.getNews()!!
+        if (list != null && list?.size != 0) {
+                    context?.let { AppTools.showToast(it, "Données Chargées") }
                     listOfNews = list.toMutableList()
                     mAdapter?.refreshAdapter(listOfNews as MutableList<News>)
                 }
-            }
+
         }
-    }
 
 
     private fun partItemClicked(partItem : News) {

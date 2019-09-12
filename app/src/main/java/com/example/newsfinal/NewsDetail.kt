@@ -23,10 +23,11 @@ class NewsDetail : AppCompatActivity() {
         var intentThatStartedThisActivity = getIntent()
 
 
-
         val db =NewsDB.getInstance(this)
 
         val thread = Thread {
+
+            val dao = db?.articleDao()
             var art = News()
 var act=this
             art.id= article!!.id
@@ -38,7 +39,6 @@ var act=this
             art.date = article!!.date
             art.url= article!!.url
 
-            val dao = db?.articleDao()
 
 
 

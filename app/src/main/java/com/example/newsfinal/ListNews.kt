@@ -48,7 +48,7 @@ class ListNews : Fragment() {
         val service: ServiceInterface = ServiceVolley()
         var path = ""
         if(categorie == 0)
-            path = "http://192.168.137.15/API-NEWS/newsGet.php"
+            path = "https://dznowapp.serveo.net/API-NEWS/api/newsGet.php"
         else {
             var ctg = ""
             when (categorie) {

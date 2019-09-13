@@ -89,9 +89,6 @@ var act=this
         categorie_article.text = article!!.categorie
         auteur.text = article!!.author
         txt_descreption.text = article!!.description
-        txt_url.text=article!!.url
-
-
     }
     companion object {
         var article : News? = null

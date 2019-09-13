@@ -22,7 +22,6 @@ import org.json.JSONArray
 
 
 class SauvegaderFragment : Fragment() {
-    var context = activity
     private var listOfNews : List<News>? = listOf()
     private var mAdapter: ListNewsAdapter ?= null
     private var db: NewsDB? = null
@@ -69,7 +68,6 @@ class SauvegaderFragment : Fragment() {
        dao = db?.articleDao()
         var list: List<News> = dao?.getNews()!!
         if (list != null && list?.size != 0) {
-                    context?.let { AppTools.showToast(it, "Données Chargées") }
                     listOfNews = list.toMutableList()
                     mAdapter?.refreshAdapter(listOfNews as MutableList<News>)
                 }

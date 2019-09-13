@@ -48,7 +48,7 @@ class ListNews : Fragment() {
         val service: ServiceInterface = ServiceVolley()
         var path = ""
         if(categorie == 0)
-            path = "http://192.168.137.15/API-NEWS/newsGet.php"
+            path = "http://dznowapp.serveo.net/API-NEWS/api/newsGet.php"
         else {
             var ctg = ""
             when (categorie) {
@@ -65,7 +65,7 @@ class ListNews : Fragment() {
                     ctg = "international"
                 }
             }
-            path = "http://192.168.137.15/API-NEWS/API-NEWS/newsGetCategorie.php?categorie=" + ctg
+            path = "http://dznowapp.serveo.net/API-NEWS/api/newsGetCategorie.php?categorie=" + ctg
         }
         var list = listOf<News>()
         service.get(path) { response ->

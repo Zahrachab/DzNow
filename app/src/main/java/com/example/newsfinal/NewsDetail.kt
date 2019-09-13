@@ -28,6 +28,14 @@ class NewsDetail : AppCompatActivity() {
         val thread = Thread {
 
             val dao = db?.articleDao()
+
+            if (dao?.getNewsById(article!!.id)  != null ) {
+
+
+                likeButton.isLiked=true
+            }
+
+
             var art = News()
 var act=this
             art.id= article!!.id

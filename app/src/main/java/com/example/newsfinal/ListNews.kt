@@ -24,31 +24,31 @@ class ListNews : Fragment() {
     private var mAdapter: ListNewsAdapter ?= null
     private var categorie: Int = 0
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            retainInstance = true
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
+    }
 
-        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-            return inflater.inflate(R.layout.fragment_list_news, container, false)
-        }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_list_news, container, false)
+    }
 
 
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
-            list_recycler_view.apply {
-                layoutManager = LinearLayoutManager(activity) as RecyclerView.LayoutManager?
-                adapter = ListNewsAdapter(listOfNews, { partItem : News  -> partItemClicked(partItem) })
-                mAdapter = adapter as ListNewsAdapter
-                }
-            getListNews(categorie)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        list_recycler_view.apply {
+            layoutManager = LinearLayoutManager(activity) as RecyclerView.LayoutManager?
+            adapter = ListNewsAdapter(listOfNews, { partItem : News  -> partItemClicked(partItem) })
+            mAdapter = adapter as ListNewsAdapter
         }
+        getListNews(categorie)
+    }
 
     fun getListNews(categorie: Int) {
         val service: ServiceInterface = ServiceVolley()
         var path = ""
-        if(categorie == 0)
-            path = "http://192.168.137.15/API-NEWS/newsGet.php"
+        if(categorie == 0)g
+            path = "https://dznowapp.serveo.net/API-NEWS/api/newsGet.php"
         else {
             var ctg = ""
             when (categorie) {
@@ -56,7 +56,7 @@ class ListNews : Fragment() {
                     ctg = "sport"
                 }
                 2 -> {
-                  ctg = "politique"
+                    ctg = "politique"
                 }
                 3 -> {
                     ctg = "culture"
@@ -96,12 +96,12 @@ class ListNews : Fragment() {
 
 
     companion object {
-            fun newInstance(categorie: Int) :
+        fun newInstance(categorie: Int) :
                 ListNews {
-                val fragment = ListNews()
-                fragment.categorie = categorie
-                return fragment
-            }
+            val fragment = ListNews()
+            fragment.categorie = categorie
+            return fragment
         }
+    }
 
 }

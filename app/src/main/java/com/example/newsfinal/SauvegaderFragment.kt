@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.fragment_archive.*
 import org.json.JSONArray
 
 
+
 class SauvegaderFragment : Fragment() {
     private var listOfNews : List<News>? = listOf()
     private var mAdapter: ListNewsAdapter ?= null
@@ -65,14 +66,14 @@ class SauvegaderFragment : Fragment() {
 
 
         db = context?.let { NewsDB.getInstance(it) }
-       dao = db?.articleDao()
+        dao = db?.articleDao()
         var list: List<News> = dao?.getNews()!!
         if (list != null && list?.size != 0) {
-                    listOfNews = list.toMutableList()
-                    mAdapter?.refreshAdapter(listOfNews as MutableList<News>)
-                }
-
+            listOfNews = list.toMutableList()
+            mAdapter?.refreshAdapter(listOfNews as MutableList<News>)
         }
+
+    }
 
 
     private fun partItemClicked(partItem : News) {

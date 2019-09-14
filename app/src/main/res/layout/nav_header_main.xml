@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             android:id="@+id/nav_main"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:paddingTop="50dp"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_width="match_parent"
+                  android:id="@+id/logo"
+                  android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                  android:orientation="horizontal"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  android:layout_height="50dp">
+        <ImageView
+                android:layout_width="50dp"
+                android:background="@drawable/logo"
+                android:layout_height="50dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/logoName"
+                android:text="DZ NOW"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"/>
+
+    </LinearLayout>
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo"
+            android:background="@color/colorPrimary" />
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:id="@+id/profile"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo"
+            android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:civ_border_width="4dp"
+                app:civ_border_color="@color/colorAccent"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/userNameHeader"
+                android:text="Mohammed Khalil"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:layout_centerVertical="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_toRightOf="@+id/profile_image"/>
+
+
+
+    </RelativeLayout>
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile"
+            android:background="@color/colorPrimary" />
+
+
+
+</android.support.constraint.ConstraintLayout>

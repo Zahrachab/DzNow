@@ -10,23 +10,65 @@ import android.support.v7.widget.Toolbar
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
+import android.support.constraint.ConstraintLayout
+import android.support.design.widget.NavigationView
+import android.support.v7.app.ActionBarDrawerToggle
+import android.text.Layout
+import android.view.View
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.example.newsfinal.R
+import com.google.firebase.auth.FirebaseAuth
+import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import java.util.*
+import android.widget.TextView
+import com.bumptech.glide.load.engine.Resource
+import kotlinx.android.synthetic.main.nav_header_main.*
+import android.widget.LinearLayout
 
 
 
-class NewsActivity : AppCompatActivity() {
+
+
+
+
+class NewsActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
+    override fun onNavigationItemSelected(p0: MenuItem): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     var bottomNavigation: BottomNavigationView? = null
     var mTopToolbar: Toolbar? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fragement)
+        setContentView(R.layout.activity_main)
 
         mTopToolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(mTopToolbar)
-        getSupportActionBar()!!.setTitle(null)
+        getSupportActionBar()?.setTitle(null)
+
+        val toggle = ActionBarDrawerToggle(
+            this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        nav_view.setNavigationItemSelectedListener(this)
+
+
+
+
+        val navigationView =  findViewById<NavigationView>(R.id.nav_view)
+
+        val photo= navigationView.getHeaderView(0).findViewById<CircleImageView>(R.id.profile_image)
+        val userName= navigationView.getHeaderView(0).findViewById<TextView>(R.id.userNameHeader)
+        val firebaseAuth = FirebaseAuth.getInstance()
+        Glide.with(this).load(firebaseAuth?.currentUser?.photoUrl).into(photo)
+        userName.text = firebaseAuth.currentUser?.displayName
 
         val fm = supportFragmentManager
 

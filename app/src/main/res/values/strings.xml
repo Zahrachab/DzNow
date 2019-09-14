@@ -1,4 +1,6 @@
 <resources>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
     <string name="title_accueil">Ce que vous devez savoir</string>
     <string name="app_name">News App</string>
     <string name="nav_archive">Archive</string>
@@ -34,4 +36,7 @@
     <string name="paramètres">Paramètres</string>
     <string name="sites_preferes">Sites préférées</string>
     <string name="thematiques_preferes">Thématiques préférée</string>
+    <string name="request_client_id" translatable="false">
+        1073519961923-arani6g8m45tsrhhk8d87n0simi8d7lb.apps.googleusercontent.com
+    </string>
 </resources>

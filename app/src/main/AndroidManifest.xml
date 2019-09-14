@@ -15,6 +15,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".View.UserActivity">
+        </activity>
+        <activity android:name=".View.TestActivity">
+        </activity>
         <activity android:name=".View.SettingsActivity">
         </activity>
         <activity android:name=".View.NewsDetail">
@@ -29,8 +33,7 @@
         <activity android:name=".View.NewsActivity">
         </activity>
 
-        <service
-                android:name=".Services.MessagingService">
+        <service android:name=".Services.MessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
@@ -39,9 +42,9 @@
         <meta-data
                 android:name="com.google.firebase.messaging.default_notification_icon"
                 android:resource="@drawable/icon_fcm"/>
-        <meta-data android:name="com.google.firebase.messaging.default_notification_color"
-                   android:resource="@drawable/icon_fcm" />
+        <meta-data
+                android:name="com.google.firebase.messaging.default_notification_color"
+                android:resource="@drawable/icon_fcm"/>
     </application>
-
 
 </manifest>

@@ -7,6 +7,9 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+    lintOptions {
+        abortOnError false
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.newsfinal"
@@ -57,6 +60,12 @@ dependencies {
     //firebae cloud messaging
     implementation 'com.google.firebase:firebase-messaging:17.3.2'
 
+    implementation 'com.google.firebase:firebase-auth:16.0.3'
+
+    implementation 'com.google.android.gms:play-services-auth:16.0.0'
+
+    //circle image
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 
 }
 

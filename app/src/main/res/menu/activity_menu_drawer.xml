@@ -5,13 +5,13 @@
 
     <group android:checkableBehavior="single">
         <item
-                android:id="@+id/nav_offres"
+                android:id="@+id/nav_videos"
                 android:title="Vidéos et audios"/>
         <item
-                android:id="@+id/nav_trajets"
+                android:id="@+id/nav_options"
                 android:title="Paramètres"/>
         <item
-                android:id="@+id/nav_chat"
+                android:id="@+id/nav_signOut"
                 android:title="Se déconnecter"/>
 
     </group>

@@ -12,6 +12,7 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.support.constraint.ConstraintLayout
 import android.support.design.widget.NavigationView
+import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.text.Layout
 import android.view.View
@@ -27,25 +28,38 @@ import android.widget.TextView
 import com.bumptech.glide.load.engine.Resource
 import kotlinx.android.synthetic.main.nav_header_main.*
 import android.widget.LinearLayout
-
-
-
-
-
+import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.tasks.OnCompleteListener
 
 
 class NewsActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        // Handle navigation view item clicks here.
+        when (p0.itemId) {
+            R.id.nav_signOut -> {
+                signOut()
+            }
+            R.id.nav_options -> {
+
+            }
+
+
+        }
+
+        drawer_layout.closeDrawer(GravityCompat.START)
+        return true
     }
 
     var bottomNavigation: BottomNavigationView? = null
     var mTopToolbar: Toolbar? = null
+    var firebaseAuth : FirebaseAuth ?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        firebaseAuth = FirebaseAuth.getInstance()
 
         mTopToolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(mTopToolbar)
@@ -66,9 +80,9 @@ class NewsActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         val photo= navigationView.getHeaderView(0).findViewById<CircleImageView>(R.id.profile_image)
         val userName= navigationView.getHeaderView(0).findViewById<TextView>(R.id.userNameHeader)
-        val firebaseAuth = FirebaseAuth.getInstance()
+
         Glide.with(this).load(firebaseAuth?.currentUser?.photoUrl).into(photo)
-        userName.text = firebaseAuth.currentUser?.displayName
+        userName.text = firebaseAuth?.currentUser?.displayName
 
         val fm = supportFragmentManager
 
@@ -170,4 +184,16 @@ class NewsActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         val language = sharedPreferences.getString("My_Lang", "")
         setLocate(language)
     }
+
+    private fun signOut() {
+        // Firebase sign out
+        firebaseAuth?.signOut()
+
+        // Google sign out
+        Auth.GoogleSignInApi.signOut(Accueil.googleApiClient)
+        intent = Intent (this, Accueil::class.java)
+        startActivity(intent)
+    }
+
+
 }

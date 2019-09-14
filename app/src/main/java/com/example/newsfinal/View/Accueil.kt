@@ -1,21 +1,13 @@
 
 package com.example.newsfinal.View
 
-import android.Manifest
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.newsfinal.R
-import kotlinx.android.synthetic.main.activity_accueil.*
-import android.content.Context
-import android.content.pm.PackageManager
-import android.support.v4.app.ActivityCompat
-import android.telephony.TelephonyManager
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.example.newsfinal.Interface.ServiceInterface
-import com.example.newsfinal.Services.ServiceVolley
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -23,8 +15,10 @@ import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.iid.FirebaseInstanceId
-import org.json.JSONObject
+import com.google.android.gms.tasks.OnCompleteListener
+
+
+
 
 
 
@@ -38,10 +32,7 @@ class Accueil : AppCompatActivity(), View.OnClickListener {
     //Request codes
     val GOOGLE_LOG_IN_RC = 1
     val FACEBOOK_LOG_IN_RC = 2
-    // Google API Client object.
-    var googleApiClient: GoogleApiClient? = null
-    // Firebase Auth Object.
-    var firebaseAuth: FirebaseAuth? = null
+
 
 
     override fun onStart() {
@@ -133,6 +124,12 @@ class Accueil : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    companion object {
+        // Google API Client object.
+        var googleApiClient: GoogleApiClient? = null
+        // Firebase Auth Object.
+        var firebaseAuth: FirebaseAuth? = null
+    }
 
 
 }

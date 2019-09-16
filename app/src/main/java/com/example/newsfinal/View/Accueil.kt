@@ -1,13 +1,20 @@
 
 package com.example.newsfinal.View
 
+import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
+import android.telephony.TelephonyManager
 import com.example.newsfinal.R
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.example.newsfinal.Interface.ServiceInterface
+import com.example.newsfinal.Services.ServiceVolley
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -16,10 +23,8 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.android.gms.tasks.OnCompleteListener
-
-
-
-
+import com.google.firebase.auth.UserInfo
+import org.json.JSONObject
 
 
 class Accueil : AppCompatActivity(), View.OnClickListener {
@@ -116,11 +121,58 @@ class Accueil : AppCompatActivity(), View.OnClickListener {
             Log.i(TAG, "Firebase Authentication, is result a success? ${task.isSuccessful}.")
             if (task.isSuccessful) {
                 // Sign in success, update UI with the signed-in user's information
+
+
                 startActivity(Intent(this@Accueil, NewsActivity::class.java))
             } else {
                 // If sign in fails, display a message to the user.
                 Log.e(TAG, "Authenticating with Google credentials in firebase FAILED !!")
             }
+        }
+    }
+
+    fun getUniqueIMEIId(context: Context): String {
+        try {
+            val telephonyManager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+            if (ActivityCompat.checkSelfPermission(
+                    context,
+                    Manifest.permission.READ_PHONE_STATE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return ""
+            }
+            val imei = telephonyManager.deviceId
+            return if (imei != null && !imei.isEmpty()) {
+                imei
+            } else {
+                android.os.Build.SERIAL
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        return "not_found"
+    }
+
+    private fun saveUserInfos() {
+        val path: String = "saveCompte.php"
+
+        val params = JSONObject()
+        params.put("uid", firebaseAuth?.currentUser?.uid)
+        params.put("imei",getUniqueIMEIId(this))
+        params.put("name", firebaseAuth?.currentUser?.displayName)
+
+        val service: ServiceInterface = ServiceVolley()
+        service.post(path, params) { response ->
+            Toast.makeText(this, "Modification avec succès", Toast.LENGTH_SHORT).show()
+
         }
     }
 

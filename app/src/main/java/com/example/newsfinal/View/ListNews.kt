@@ -51,21 +51,22 @@ class ListNews : Fragment() {
     fun getListNews(categorie: Int) {
         val service: ServiceInterface = ServiceVolley()
         var path = ""
-        if(categorie == 0)
+
+        if(categorie == 1)
             path = "newsGet.php"
         else {
             var ctg = ""
             when (categorie) {
-                1 -> {
+                2 -> {
                     ctg = "sport"
                 }
-                2 -> {
+                3 -> {
                   ctg = "politique"
                 }
-                3 -> {
+                4 -> {
                     ctg = "culture"
                 }
-                4 -> {
+                5 -> {
                     ctg = "international"
                 }
             }
@@ -73,7 +74,7 @@ class ListNews : Fragment() {
         }
         var list = listOf<News>()
         service.get(path) { response ->
-            if(response != null && response != "error")
+            if(response != null && response != "error" && response!= "")
             {
                 val gson = Gson()
                 val jsonArray = JSONArray(response)

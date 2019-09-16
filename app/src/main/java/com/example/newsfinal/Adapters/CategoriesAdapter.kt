@@ -1,8 +1,9 @@
-package com.example.newsfinal.View
+package com.example.newsfinal.Adapters
 
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import com.example.newsfinal.View.ViewPagerFragment
 
 class CategoriesAdapter internal constructor(fm: FragmentManager) : FragmentPagerAdapter(fm){
 

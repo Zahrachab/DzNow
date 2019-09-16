@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.newsfinal.R
 
 class ViewPagerFragment : Fragment() {
-    private var categorie: Int = 0
+    private var categorie: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

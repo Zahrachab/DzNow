@@ -11,7 +11,7 @@ import java.io.Serializable
 class News(
     @PrimaryKey(autoGenerate = true)
     @SerializedName("id") var id: Int? = null,
-    var title: String = "",
+    var title: String  = "",
     var description: String = "",
     var date: String = "",
     var image: String ="",

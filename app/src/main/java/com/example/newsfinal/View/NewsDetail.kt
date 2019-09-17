@@ -26,11 +26,9 @@ class NewsDetail : AppCompatActivity() {
 
         val db =NewsDB.getInstance(this)
 
-        val thread = Thread {
-
             val dao = db?.articleDao()
 
-            if (dao?.getNewsById(article?.id!!)  != null ) {
+            if (article?.id?.let { dao?.getNewsById(it) } != null ) {
 
 
                 likeButton.isLiked=true
@@ -39,7 +37,7 @@ class NewsDetail : AppCompatActivity() {
 
             var art = News()
             var act=this
-            art.id= article!!.id
+            art.id= article?.id
             art.title = article!!.title
             art.description =   article!!.description
             art.image = article!!.image
@@ -84,8 +82,6 @@ class NewsDetail : AppCompatActivity() {
             //fetch Records
 
 
-        }
-        thread.start()
 
 
 

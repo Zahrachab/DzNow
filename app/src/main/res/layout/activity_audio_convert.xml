@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".View.audioConvert">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/relativeLayout">
+        <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark"
+                android:background="@android:color/white"
+                tools:ignore="MissingConstraints">
+
+            <ImageView android:layout_width="40dp" android:layout_height="40dp"
+                    android:src="@drawable/logo"/>
+
+            <TextView android:layout_width="match_parent"
+                    android:height="20dp"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_height="wrap_content"
+                    android:text="DZ_now"
+                    android:gravity="right"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"/>
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="350dp">
+
+            <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="310dp">
+
+                <TextView
+                        android:id="@+id/text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp" />
+            </ScrollView>
+
+        </android.support.v7.widget.CardView>
+
+
+        <Button
+                android:id="@+id/button_speak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:text="convert to audio"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <FrameLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/fragment_bottomNavigation"
+                android:background="@android:color/white">
+            <android.support.design.widget.BottomNavigationView android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    app:menu="@menu/nav_items"
+                    android:id="@+id/bottomNavigationView3"/>
+        </FrameLayout>
+    </RelativeLayout>
+
+
+
+
+</android.support.constraint.ConstraintLayout>

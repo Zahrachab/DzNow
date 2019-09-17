@@ -56,7 +56,6 @@ class ListNewsAdapter(private var list: List<News>?, val clickListener: (News) -
             mDateView?.text = news?.date
             mcategorieView?.text = news?.categorie
             Glide.with(mImageView!!.context).load(news?.image).into(mImageView!!)
-
             // mImageView?.setImageResource(R.drawable.imgnew1)
         }
     }

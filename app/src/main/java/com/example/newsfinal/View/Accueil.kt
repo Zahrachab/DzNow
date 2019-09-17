@@ -23,7 +23,9 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.UserInfo
+import com.google.firebase.iid.FirebaseInstanceId
 import org.json.JSONObject
 
 
@@ -73,6 +75,19 @@ class Accueil : AppCompatActivity(), View.OnClickListener {
                 .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
                 .build()
         }
+
+
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w(TAG, "getInstanceId failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new Instance ID token
+                val token = task.result?.token
+
+            })
 
 
 

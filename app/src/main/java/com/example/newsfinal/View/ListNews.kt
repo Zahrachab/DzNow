@@ -14,6 +14,7 @@ import com.example.newsfinal.Interface.ServiceInterface
 import com.example.newsfinal.Model.News
 import com.example.newsfinal.R
 import com.example.newsfinal.Services.ServiceVolley
+import com.example.newsfinal.View.NewsDetail
 import com.google.gson.Gson
 
 

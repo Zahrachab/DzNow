@@ -1,21 +1,25 @@
 package com.example.newsfinal.Model
 
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 
+@Entity
 
-data class News(
-    @SerializedName("id") val id: Int? = null,
-    val title: String,
-    val description: String,
-    val date: String,
-    val image: String,
-    val categorie: String,
-    val author: String,
-    val url: String,
-    val site: String,
-    val thematique: String
+class News(
+    @PrimaryKey(autoGenerate = true)
+    @SerializedName("id") var id: Int? = null,
+    var title: String = "",
+    var description: String = "",
+    var date: String = "",
+    var image: String ="",
+    var categorie: String = "",
+    var author: String = "",
+    var url: String = "",
+    var site: String = "",
+    var thematique: String = ""
     ) : Serializable {
 
 }

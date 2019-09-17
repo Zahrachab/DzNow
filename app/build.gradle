@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+
+
 android {
     lintOptions {
         abortOnError false
@@ -28,7 +30,7 @@ android {
 }
 
 dependencies {
-    def room_version = "1.1.1"
+
     implementation 'com.github.jd-alexander:LikeButton:0.2.3'
     implementation 'com.beust:klaxon:5.0.1'
     implementation 'com.balysv:material-ripple:1.0.2'
@@ -57,6 +59,13 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 
+    //room
+
+    implementation "android.arch.persistence.room:runtime:1.0.0"
+    kapt "android.arch.persistence.room:compiler:1.0.0"
+
+
+
     //firebae cloud messaging
     implementation 'com.google.firebase:firebase-messaging:17.3.2'
 
@@ -67,6 +76,11 @@ dependencies {
     //circle image
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
+}
+
+kapt {
+    mapDiagnosticLocations = true
+    generateStubs = true
 }
 
 apply plugin: 'com.google.gms.google-services'

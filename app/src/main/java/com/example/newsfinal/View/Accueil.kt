@@ -56,6 +56,7 @@ class Accueil : AppCompatActivity(), View.OnClickListener {
         if(firebaseAuth?.currentUser != null)
         {
             val intent : Intent = Intent (this, NewsActivity::class.java)
+			//
             startActivity(intent)
 
         }

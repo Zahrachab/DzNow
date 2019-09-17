@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
-import com.bumptech.glide.Glide
+//import com.bumptech.glide.Glide
 import com.example.newsfinal.Model.News
 import com.example.newsfinal.R
 
@@ -55,9 +55,10 @@ class ListNewsAdapter(private var list: List<News>?, val clickListener: (News) -
             mDescView?.text = news?.description
             mDateView?.text = news?.date
             mcategorieView?.text = news?.categorie
-            Glide.with(mImageView!!.context).load(news?.image).into(mImageView!!)
+            //Glide.with(mImageView!!.context).load(news?.image).into(mImageView!!)
             // mImageView?.setImageResource(R.drawable.imgnew1)
         }
+
     }
 
 

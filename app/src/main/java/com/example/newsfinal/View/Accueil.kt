@@ -52,11 +52,11 @@ class Accueil : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_accueil)
+        
         firebaseAuth = FirebaseAuth.getInstance()
         if(firebaseAuth?.currentUser != null)
         {
             val intent : Intent = Intent (this, NewsActivity::class.java)
-			//
             startActivity(intent)
 
         }

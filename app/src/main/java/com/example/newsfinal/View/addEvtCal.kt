@@ -1,10 +1,11 @@
 package com.example.newsfinal.View
 
-import android.annotation.TargetApi
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+
+import android.annotation.TargetApi
 import com.example.newsfinal.R
-import kotlinx.android.synthetic.main.activity_test_date.*
+import kotlinx.android.synthetic.main.activity_add_evt_cal.*
 import android.content.Intent
 import android.provider.CalendarContract.Events
 import android.provider.CalendarContract
@@ -18,17 +19,15 @@ import java.text.SimpleDateFormat
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
-class testDate : AppCompatActivity() {
+class addEvtCal : AppCompatActivity() {
 
     @TargetApi(Build.VERSION_CODES.O)
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.example.newsfinal.R.layout.activity_test_date)
+        setContentView(com.example.newsfinal.R.layout.activity_add_evt_cal)
 
-
-
-       // var input: String? = intent.getStringExtra("text")
+        // var input: String? = intent.getStringExtra("text")
         var input="John Doe at:2016-06-16 Notes:This is a test. " +
                 "John Doe at:2017-07-17 Notes:This is a test." +
                 "here an exemple of article. you can add event and" +
@@ -67,29 +66,29 @@ class testDate : AppCompatActivity() {
         this.btn11.setOnClickListener{
             if (i<listPat.size) {
 
-               var date = LocalDate.parse(listPat.get(i), DateTimeFormatter.ISO_DATE)
-               val beginTime = Calendar.getInstance()
-               beginTime.set(date.year, date.monthValue, date.dayOfMonth, 8, 30)
-               val endTime = Calendar.getInstance()
-               endTime.set(2019, 10, 17, 8, 30)
+                var date = LocalDate.parse(listPat.get(i), DateTimeFormatter.ISO_DATE)
+                val beginTime = Calendar.getInstance()
+                beginTime.set(date.year, date.monthValue, date.dayOfMonth, 8, 30)
+                val endTime = Calendar.getInstance()
+                endTime.set(2019, 10, 17, 8, 30)
 
                 var str=evtName.text
 
-                 val intent = Intent(Intent.ACTION_INSERT)
-                   .setData(Events.CONTENT_URI)
-                   .putExtra(
-                       CalendarContract.EXTRA_EVENT_BEGIN_TIME,
-                       beginTime.getTimeInMillis()
-                   )
-                   .putExtra(
-                       CalendarContract.EXTRA_EVENT_END_TIME,
-                       beginTime.getTimeInMillis()
-                   )
-                   .putExtra(Events.TITLE, "$str")
-                   .putExtra(Events.DESCRIPTION, "Group class")
-                   .putExtra(Events.EVENT_LOCATION, "The gym")
-                   .putExtra(Events.AVAILABILITY, Events.AVAILABILITY_BUSY)
-                   .putExtra(Intent.EXTRA_EMAIL, "fa_bouali@esi.dz")
+                val intent = Intent(Intent.ACTION_INSERT)
+                    .setData(Events.CONTENT_URI)
+                    .putExtra(
+                        CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+                        beginTime.getTimeInMillis()
+                    )
+                    .putExtra(
+                        CalendarContract.EXTRA_EVENT_END_TIME,
+                        beginTime.getTimeInMillis()
+                    )
+                    .putExtra(Events.TITLE, "$str")
+                    .putExtra(Events.DESCRIPTION, "Group class")
+                    .putExtra(Events.EVENT_LOCATION, "The gym")
+                    .putExtra(Events.AVAILABILITY, Events.AVAILABILITY_BUSY)
+                    .putExtra(Intent.EXTRA_EMAIL, "fa_bouali@esi.dz")
 
                 startActivity(intent)
 
@@ -129,7 +128,6 @@ class testDate : AppCompatActivity() {
 
 
         }
-
 
     }
 }

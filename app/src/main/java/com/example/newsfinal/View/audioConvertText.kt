@@ -1,18 +1,17 @@
 package com.example.newsfinal.View
 
-import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-
+import android.os.Build
 import android.speech.tts.TextToSpeech
 import android.support.annotation.RequiresApi
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import kotlinx.android.synthetic.main.activity_audio_convert.*
+import kotlinx.android.synthetic.main.activity_audio_convert_text.*
 import java.util.*
 
-class audioConvert : AppCompatActivity(), TextToSpeech.OnInitListener {
+class audioConvertText : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private var tts: TextToSpeech? = null
     private var buttonSpeak: Button? = null
@@ -22,7 +21,8 @@ class audioConvert : AppCompatActivity(), TextToSpeech.OnInitListener {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.example.newsfinal.R.layout.activity_audio_convert)
+        setContentView(com.example.newsfinal.R.layout.activity_audio_convert_text)
+
 
         //input = intent.getStringExtra("text")
         input="Il faut afficher de vrais articles d’actualité (les plus récents) provenant des sites algériens (français\n" +
@@ -34,15 +34,14 @@ class audioConvert : AppCompatActivity(), TextToSpeech.OnInitListener {
                 "publié."
 
         text.text=input
-        buttonSpeak = this.button_speak
+        buttonSpeak = this.button_speak1
         buttonSpeak!!.isEnabled = false;
         tts = TextToSpeech(this, this)
 
         buttonSpeak!!.setOnClickListener { speakOut() }
     }
 
-
-     override fun onInit(status: Int) {
+    override fun onInit(status: Int) {
 
         if (status == TextToSpeech.SUCCESS) {
             // set US English as language for tts
@@ -74,6 +73,4 @@ class audioConvert : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
         super.onDestroy()
     }
-
-
 }

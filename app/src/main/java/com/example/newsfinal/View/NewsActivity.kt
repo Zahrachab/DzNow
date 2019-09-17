@@ -17,7 +17,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.text.Layout
 import android.view.View
 import android.widget.ImageView
-import com.bumptech.glide.Glide
+//import com.bumptech.glide.Glide
 import com.example.newsfinal.R
 import com.google.firebase.auth.FirebaseAuth
 import de.hdodenhof.circleimageview.CircleImageView
@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.util.*
 import android.widget.TextView
-import com.bumptech.glide.load.engine.Resource
+//import com.bumptech.glide.load.engine.Resource
 import kotlinx.android.synthetic.main.nav_header_main.*
 import android.widget.LinearLayout
 import com.google.android.gms.auth.api.Auth
@@ -81,7 +81,7 @@ class NewsActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         val photo= navigationView.getHeaderView(0).findViewById<CircleImageView>(R.id.profile_image)
         val userName= navigationView.getHeaderView(0).findViewById<TextView>(R.id.userNameHeader)
 
-        Glide.with(this).load(firebaseAuth?.currentUser?.photoUrl).into(photo)
+        //Glide.with(this).load(firebaseAuth?.currentUser?.photoUrl).into(photo)
         userName.text = firebaseAuth?.currentUser?.displayName
 
         val fm = supportFragmentManager

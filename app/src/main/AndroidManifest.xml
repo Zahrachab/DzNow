@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.newsfinal">
+        package="com.example.newsfinal">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
             android:name=".Singleton.BackendVolley"
@@ -15,34 +15,31 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-
-        <activity android:name=".View.SettingsActivity">
-        </activity>
-        <activity android:name=".View.NewsDetail">
-        </activity>
+        <activity android:name=".View.audioConvertText"></activity>
+        <activity android:name=".View.addEvtCal" />
+        <activity android:name=".View.SettingsActivity" />
+        <activity android:name=".View.NewsDetail" />
         <activity android:name=".View.Accueil">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.NewsActivity">
-        </activity>
+        <activity android:name=".View.NewsActivity" />
 
         <service android:name=".Services.MessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
         <meta-data
                 android:name="com.google.firebase.messaging.default_notification_icon"
-                android:resource="@drawable/icon_fcm"/>
+                android:resource="@drawable/icon_fcm" />
         <meta-data
                 android:name="com.google.firebase.messaging.default_notification_color"
-                android:resource="@drawable/icon_fcm"/>
-
+                android:resource="@drawable/icon_fcm" />
         <meta-data
                 android:name="com.google.android.gms.version"
                 android:value="@integer/google_play_services_version" />

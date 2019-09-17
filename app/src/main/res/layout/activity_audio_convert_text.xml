@@ -4,7 +4,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".View.audioConvert">
+        tools:context=".View.audioConvertText">
+
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -54,7 +55,7 @@
 
 
         <Button
-                android:id="@+id/button_speak"
+                android:id="@+id/button_speak1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="0dp"
@@ -84,8 +85,5 @@
                     android:id="@+id/bottomNavigationView3"/>
         </FrameLayout>
     </RelativeLayout>
-
-
-
 
 </android.support.constraint.ConstraintLayout>

@@ -15,6 +15,7 @@ import com.example.newsfinal.Model.Site
 import com.example.newsfinal.Model.Thematique
 import com.example.newsfinal.R
 import com.example.newsfinal.Services.ServiceVolley
+import com.example.newsfinal.Singleton.ImeiUser
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_settings.*
 import org.json.JSONArray
@@ -94,7 +95,7 @@ class SettingsActivity : AppCompatActivity() {
 
     fun getListSites() {
         val service: ServiceInterface = ServiceVolley()
-        val imei = getUniqueIMEIId(this).toString()
+        val imei = ImeiUser.getImei(this).toString()
         var path = "siteGet.php?imei=$imei"
         var list = listOf<Site>()
         service.get(path) { response ->
@@ -116,7 +117,7 @@ class SettingsActivity : AppCompatActivity() {
 
     fun getListThematiques() {
         val service: ServiceInterface = ServiceVolley()
-        val imei = getUniqueIMEIId(this).toString()
+        val imei = ImeiUser.getImei(this)
         var path = "thematiqueGet.php?imei=$imei"
         var list = listOf<Site>()
         service.get(path) { response ->
@@ -135,35 +136,6 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
-    fun getUniqueIMEIId(context: Context): String {
-        try {
-            val telephonyManager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-            if (ActivityCompat.checkSelfPermission(
-                    context,
-                    Manifest.permission.READ_PHONE_STATE
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return ""
-            }
-            val imei = telephonyManager.deviceId
-            return if (imei != null && !imei.isEmpty()) {
-                imei
-            } else {
-                android.os.Build.SERIAL
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-
-        return "not_found"
-    }
 
 
 
@@ -172,7 +144,7 @@ class SettingsActivity : AppCompatActivity() {
 
         val params = JSONObject()
         params.put("idSite", site.id)
-        params.put("imei", getUniqueIMEIId(this))
+        params.put("imei", ImeiUser.getImei(this))
 
         val service: ServiceInterface = ServiceVolley()
         service.post(path, params) { response ->
@@ -188,7 +160,7 @@ class SettingsActivity : AppCompatActivity() {
 
         val params = JSONObject()
         params.put("idSite",site.id)
-        params.put("imei", getUniqueIMEIId(this))
+        params.put("imei", ImeiUser.getImei(this))
 
         val service: ServiceInterface = ServiceVolley()
         service.post(path, params) { response ->
@@ -204,7 +176,7 @@ class SettingsActivity : AppCompatActivity() {
 
         val params = JSONObject()
         params.put("idThematique", theme.id)
-        params.put("imei", getUniqueIMEIId(this))
+        params.put("imei", ImeiUser.getImei(this))
 
         val service: ServiceInterface = ServiceVolley()
         service.post(path, params) { response ->
@@ -219,7 +191,7 @@ class SettingsActivity : AppCompatActivity() {
 
         val params = JSONObject()
         params.put("idThematique", theme.id)
-        params.put("imei", getUniqueIMEIId(this))
+        params.put("imei", ImeiUser.getImei(this))
 
         val service: ServiceInterface = ServiceVolley()
         service.post(path, params) { response ->

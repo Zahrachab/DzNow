@@ -28,7 +28,21 @@ class testDate : AppCompatActivity() {
 
 
 
-        var input: String? = intent.getStringExtra("text")
+       // var input: String? = intent.getStringExtra("text")
+        var input="John Doe at:2016-06-16 Notes:This is a test. " +
+                "John Doe at:2017-07-17 Notes:This is a test." +
+                "here an exemple of article. you can add event and" +
+                "make your own configuration" +
+                "it 's so simple.  " +
+                "John Doe at:2018-08-18 Notes:This is a test." +
+                "John Doe at:2019-09-19 Notes:This is a test. " +
+                "here an exemple of article. you can add event and" +
+                "make your own configuration" +
+                "it 's so simple.  " +
+                "John Doe at:2019-09-22 Notes:This is a test.  "+
+                "here an exemple of article. you can add event and" +
+                "make your own configuration" +
+                "it 's so simple.  "
         textShow.text=input
 
         var listPat = mutableListOf("")

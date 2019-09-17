@@ -5,64 +5,22 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.support.v4.app.ActivityCompat
 import android.telephony.TelephonyManager
-import android.util.Log
-import android.widget.Toast
 import com.example.newsfinal.Interface.ServiceInterface
-import com.google.firebase.messaging.FirebaseMessaging
-import com.google.firebase.messaging.FirebaseMessagingService
-import com.google.firebase.messaging.RemoteMessage
 import org.json.JSONObject
 
-class MessagingService : FirebaseMessagingService() {
-    private val TOPIC_GLOBAL = "global"
-
-
-    override fun onMessageReceived(remoteMessage: RemoteMessage?) {
-        // Check if message contains a data payload.
-        if (remoteMessage?.data?.size!! > 0) {
-
-        }
-
-        // Check if message contains a notification payload.
-        if (remoteMessage.notification != null) {
-
-
-        }
-
-    }
-
-
-    /**
-     * Called if InstanceID token is updated. This may occur if the security of
-     * the previous token had been compromised. Note that this is called when the InstanceID token
-     * is initially generated so this is where you would retrieve the token.
-     */
-    override fun onNewToken(token: String?) {
-        Log.d("", "Refreshed token: $token")
-
-        // now subscribe to `global` topic to receive app wide notifications
-        FirebaseMessaging.getInstance().subscribeToTopic(TOPIC_GLOBAL)
-        if (token != null) {
-            saveToken(token)
-        }
-
-
-        // If you want to send messages to this application instance or
-        // manage this apps subscriptions on the server side, send the
-
-    }
+class FcmTokenService (public var context: Context){
 
     public fun saveToken(token: String) {
         val path: String = "tokenPost.php"
 
         val params = JSONObject()
         params.put("token", token)
-        params.put("imei", getUniqueIMEIId(this))
+        params.put("imei", getUniqueIMEIId(context))
 
         val service: ServiceInterface = ServiceVolley()
         service.post(path, params) { response ->
-            Toast.makeText(this, "Modification avec succès", Toast.LENGTH_SHORT).show()
-
+             val prefs = SharedPreferncesHelper(context)
+            prefs.fcmToken = token
         }
     }
 
@@ -95,6 +53,4 @@ class MessagingService : FirebaseMessagingService() {
 
         return "not_found"
     }
-
-
 }

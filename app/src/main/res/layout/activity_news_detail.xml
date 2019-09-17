@@ -138,15 +138,7 @@
                                         android:layout_below="@+id/title_article"
                                         android:layout_alignParentEnd="true"
                                 />
-                                <Button
-                                        android:id="@+id/btn_share"
 
-                                        android:layout_width="24dp"
-                                        android:layout_height="24dp"
-                                        android:padding="16dp"
-                                        android:layout_below="@+id/title_article"
-                                        android:layout_marginHorizontal="200dp"
-                                        android:background="@drawable/share_icon"/>
                                 <TextView
                                         android:id="@+id/categorie_article"
                                         android:layout_width="wrap_content"
@@ -161,15 +153,17 @@
                                         android:textColor="@color/colorPrimaryDark"
                                         android:textSize="14sp"/>
 
-                                <Button android:id="@+id/lire_site"
-                                        android:text="Lire du site"
-                                        android:background="@color/white"
-                                        android:textColor="@color/colorPrimary"
-                                        android:layout_below="@id/title_article"
+                                <Button
+                                        android:id="@+id/btn_share"
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
+                                        android:padding="16dp"
+                                        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                                        android:layout_alignTop="@id/categorie_article"
                                         android:layout_toRightOf="@id/categorie_article"
-                                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                                        android:layout_height="wrap_content"
-                                        android:layout_width="wrap_content"/>
+                                        android:background="@drawable/share_icon"/>
+
+
 
                                 <LinearLayout
                                         android:id="@+id/lyt_date"

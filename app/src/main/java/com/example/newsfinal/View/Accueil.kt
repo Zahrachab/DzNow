@@ -14,7 +14,10 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.newsfinal.Interface.ServiceInterface
+import com.example.newsfinal.Services.FcmTokenService
+import com.example.newsfinal.Services.MessagingService
 import com.example.newsfinal.Services.ServiceVolley
+import com.example.newsfinal.Services.SharedPreferncesHelper
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -52,6 +55,7 @@ class Accueil : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_accueil)
+
         firebaseAuth = FirebaseAuth.getInstance()
         if(firebaseAuth?.currentUser != null)
         {
@@ -77,22 +81,9 @@ class Accueil : AppCompatActivity(), View.OnClickListener {
         }
 
 
-        FirebaseInstanceId.getInstance().instanceId
-            .addOnCompleteListener(OnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    Log.w(TAG, "getInstanceId failed", task.exception)
-                    return@OnCompleteListener
-                }
-
-                // Get new Instance ID token
-                val token = task.result?.token
-
-            })
-
-
-
-
     }
+
+
 
 
     private fun googleLogin() {

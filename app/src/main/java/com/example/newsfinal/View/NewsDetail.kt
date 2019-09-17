@@ -10,8 +10,6 @@ import android.support.annotation.RequiresApi
 import com.example.newsfinal.Model.News
 import com.example.newsfinal.R
 
-import android.content.Intent
-import android.os.AsyncTask
 import android.util.Log
 import com.like.LikeButton
 import com.like.OnLikeListener

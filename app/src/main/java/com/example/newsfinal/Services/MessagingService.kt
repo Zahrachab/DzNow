@@ -1,33 +1,24 @@
 package com.example.newsfinal.Services
 
-import android.Manifest
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.media.RingtoneManager
-import android.support.v4.app.ActivityCompat
 import android.support.v4.app.NotificationCompat
-import android.telephony.TelephonyManager
 import android.util.Log
-import android.widget.Toast
 import com.example.newsfinal.Interface.ServiceInterface
-import com.example.newsfinal.Model.News
+import com.example.newsfinal.Model.Article
 import com.example.newsfinal.R
-import com.example.newsfinal.Singleton.ImeiUser
 import com.example.newsfinal.View.NewsDetail
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.nav_header_main.view.*
-import org.json.JSONArray
 import org.json.JSONObject
 
 class MessagingService : FirebaseMessagingService() {
     private val TOPIC_GLOBAL = "global"
-
 
     /**
      * Récéption du message provenant du FCM
@@ -36,10 +27,8 @@ class MessagingService : FirebaseMessagingService() {
         // Check if message contains a data payload.
         var id : String ?= null
         if (remoteMessage?.data?.size!! > 0) {
-             id = remoteMessage.data["idArticle"]
-            val clickAction = remoteMessage.notification?.clickAction;
-
-            //Calling method to generate notification
+            id = remoteMessage.data["idArticle"]
+            //généger une notification
             remoteMessage.notification?.getBody()?.let { remoteMessage.notification?.title?.let { it1 ->
                 id?.let { it2 ->
                         sendNotification(it,
@@ -48,7 +37,6 @@ class MessagingService : FirebaseMessagingService() {
                     }
             } }
         }
-
         // Check if message contains a notification payload.
         if (remoteMessage.notification != null) {
 
@@ -56,11 +44,9 @@ class MessagingService : FirebaseMessagingService() {
 
     }
 
-
-
-
+    // Afficher push notification
     private fun sendNotification(messageBody: String, messageTitle: String,idArticle: String) {
-        var article : News ?= null
+        var article : Article ?= null
         val service: ServiceInterface = ServiceVolley()
         val path = "getArticle.php?id=$idArticle"
         service.get(path) { response ->
@@ -69,7 +55,7 @@ class MessagingService : FirebaseMessagingService() {
                 val gson = Gson()
                 val jsonObject = JSONObject(response)
                 if (jsonObject != null) {
-                    val article = gson.fromJson(jsonObject.toString(), News::class.java)
+                    val article = gson.fromJson(jsonObject.toString(), Article::class.java)
                     val intent = Intent(this, NewsDetail::class.java)
                     NewsDetail.article = article
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

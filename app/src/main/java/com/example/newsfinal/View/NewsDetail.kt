@@ -1,5 +1,6 @@
 package com.example.newsfinal.View
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
@@ -7,114 +8,106 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.provider.Telephony
 import android.support.annotation.RequiresApi
-import com.example.newsfinal.Model.News
+import com.example.newsfinal.Model.Article
 import com.example.newsfinal.R
-
-import android.util.Log
+import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.like.LikeButton
 import com.like.OnLikeListener
 import com.example.newsfinal.Room.*
 import com.example.newsfinal.Services.GoogeInfosService
 import kotlinx.android.synthetic.main.activity_news_detail.*
 
-
+/**
+ * Activity pour l'affichage d'un article
+ */
 class NewsDetail : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
+
+    //context
+    var context : Context?= null
+    //Instance de la base de données locale
+    private var db: NewsDB? = null
+    //DAO de l'article
+    private var dao: ArticleDao? = null
+
+    //service SignetService
+    private var service: GoogeInfosService ?= null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news_detail)
-        val service = GoogeInfosService(this)
-        val defaultSmsPackageName = Telephony.Sms.getDefaultSmsPackage(this)
+        context = this
 
+        //initialiser db et dao
+        db =NewsDB.getInstance(this)
+        dao = db?.articleDao()
+
+        //service SignetsService pour synchroniser avec le backend les articles archivés pour un compte google
+        service = GoogeInfosService(this)
+
+        initialiseView()
+    }
+
+
+    fun initialiseView() {
+
+        //vérifier si l'article existe en local
+        if (article?.id?.let { dao?.getNewsById(it) } != null ) {
+            //initialiser le button like
+            likeButton.isLiked=true
+        }
+
+        //click listener pour le boutton like
+        likeButton.setOnLikeListener(object : OnLikeListener {
+
+            //button like
+            override fun liked(likeButton: LikeButton) {
+
+                //envoyer au service web pour sauvegarde
+                service?.saveSignetCompte(article?.id.toString())
+
+                //sauvegarder dans sqlite
+                article?.let { dao?.saveNews(it) }
+                Toast.makeText( context, "article archivé", Toast.LENGTH_LONG).show()
+
+            }
+
+            //button unlike
+            override fun unLiked(likeButton: LikeButton) {
+
+                //envoyer au service web pour supprimer
+                service?.deleteSignetCompte(article?.id.toString())
+
+                //supprimer du sqlite
+                article?.let { dao?.deleteNews(it) }
+                Toast.makeText( context, "article supprimé de l'archive", Toast.LENGTH_LONG).show()
+            }
+        })
+
+        //click listener pour le boutton partager
         btn_share.setOnClickListener {
+            val defaultSmsPackageName = Telephony.Sms.getDefaultSmsPackage(this)
             share("gmail", defaultSmsPackageName)}
         bindData()
 
-
-
-            var intentThatStartedThisActivity = getIntent()
-
-
-        val db =NewsDB.getInstance(this)
-
-            val dao = db?.articleDao()
-
-            if (article?.id?.let { dao?.getNewsById(it) } != null ) {
-
-
-                likeButton.isLiked=true
-            }
-
-
-            var art = News()
-            var act=this
-            art.id= article?.id
-            art.title = article!!.title
-            art.description =   article!!.description
-            art.image = article!!.image
-            art.author = article!!.author
-            art.categorie = article!!.categorie
-            art.date = article!!.date
-            art.url= article!!.url
-
-
-
-
-            likeButton.setOnLikeListener(object : OnLikeListener {
-
-                override fun liked(likeButton: LikeButton) {
-
-                    service.saveSignetCompte(article?.id.toString())
-                    dao?.saveNews(art)
-
-                    AppTools.showToast(act, "Article archivé")
-
-                    dao?.getNews()?.forEach()
-                    {
-                        Log.i("Fetch Records", "Id:  : ${it.id}")
-                        Log.i("Fetch Records", "Name:  : ${it.author}")
-
-                    }
-
-                }
-
-                override fun unLiked(likeButton: LikeButton) {
-                    service.deleteSignetCompte(article?.id.toString())
-                    dao?.deleteNews(art)
-                    AppTools.showToast(act, "Article supprimié")
-                    dao?.getNews()?.forEach()
-                    {
-                        Log.i("Fetch Records", "Id:  : ${it.id}")
-                        Log.i("Fetch Records", "Name:  : ${it.author}")
-
-                    }
-
-                }
-            })
-
-
-            //fetch Records
-
-
-
-
-
     }
 
-    fun saveArchivedArticle(idArticle: String) {
 
-    }
 
     fun bindData() {
-        categorie_news.text = article!!.categorie
-        title_article.text = article!!.title
-        date.text = article!!.date
-        categorie_article.text = article!!.categorie
-        auteur.text = article!!.author
-        txt_descreption.text = article!!.description
+        categorie_news.text = article?.categorie
+        title_article.text = article?.title
+        date.text = article?.date
+        categorie_article.text = article?.categorie
+        auteur.text = article?.author
+        txt_descreption.text = article?.description
+        site_article.text = article?.site
     }
 
+
+    //fonctionnalité de partage
     private fun share(nameApp: String, nameApp2: String) {
         val targetedShareIntents = ArrayList<Intent>()
         val share = Intent(Intent.ACTION_SEND)
@@ -145,7 +138,7 @@ class NewsDetail : AppCompatActivity() {
     }
 
     companion object {
-        var article : News? = null
+        var article : Article? = null
     }
 
 }

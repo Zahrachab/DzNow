@@ -2,8 +2,6 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android" >
     <item android:title="@string/nav_home" android:icon="@drawable/baseline_home_black_24dp" android:id="@+id/homeId"/>
 
-    <item android:title="@string/nav_addArticle" android:icon="@drawable/baseline_add_photo_alternate_black_24dp"
-          android:id="@+id/addArticleId"/>
     <item android:title="@string/nav_archive" android:icon="@drawable/baseline_archive_black_24dp"
           android:id="@+id/archiveId"/>
 

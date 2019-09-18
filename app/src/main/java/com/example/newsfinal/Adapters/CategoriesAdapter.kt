@@ -10,7 +10,7 @@ class CategoriesAdapter internal constructor(fm: FragmentManager) : FragmentPage
 
 
     // tab titles
-    private val tabTitles = arrayOf("Pour Vous", "Sport", "Politique", "International", "Culture")
+    private val tabTitles = arrayOf("Pour Vous",  "Politique", "Sport", "Culture", "International")
 
 
     // overriding getPageTitle()

@@ -10,13 +10,10 @@ import android.support.v7.widget.Toolbar
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
-import android.support.constraint.ConstraintLayout
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.text.Layout
 import android.view.View
-import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.example.newsfinal.R
 import com.google.firebase.auth.FirebaseAuth
@@ -25,11 +22,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.util.*
 import android.widget.TextView
-import com.bumptech.glide.load.engine.Resource
-import kotlinx.android.synthetic.main.nav_header_main.*
-import android.widget.LinearLayout
 import com.google.android.gms.auth.api.Auth
-import com.google.android.gms.tasks.OnCompleteListener
 
 
 class NewsActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
@@ -40,12 +33,20 @@ class NewsActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 signOut()
             }
             R.id.nav_options -> {
+                bottomNavigation?.visibility = View.GONE
+                val fragment = SettingsFragement()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_changing, fragment, fragment.javaClass.getSimpleName())
+                    .commit()
 
             }
 
-
+            R.id.nav_accueil -> {
+                bottomNavigation?.visibility = View.VISIBLE
+                val fragment = NewsFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_changing, fragment, fragment.javaClass.getSimpleName())
+                    .commit()
+            }
         }
-
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
@@ -100,31 +101,26 @@ class NewsActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigationView3)
 
+        bottomNavigation?.visibility = View.VISIBLE
 
         val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
+                // fragement des articles
                 R.id.homeId -> {
+                    bottomNavigation?.visibility = View.VISIBLE
                     val fragment = NewsFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.fragment_changing, fragment, fragment.javaClass.getSimpleName())
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.addArticleId -> {
-                    val fragment = AddArticleFragment()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment_changing, fragment, fragment.javaClass.getSimpleName())
-                        .commit()
-                    return@OnNavigationItemSelectedListener true
-                }
+
+                //fragement des articles sauvegardés
                 R.id.archiveId-> {
+                    bottomNavigation?.visibility = View.VISIBLE
                     var fragment  = SauvegaderFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.fragment_changing, fragment, fragment.javaClass.getSimpleName())
                         .commit()
                     return@OnNavigationItemSelectedListener true
-                    /*
-                    var fragment: ListNews = ListNews.newInstance(getArchivedNews())
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment_changing, fragment, fragment.javaClass.getSimpleName())
-                        .commit()
-                    return@OnNavigationItemSelectedListener true*/
                 }
             }
             false
@@ -160,10 +156,6 @@ class NewsActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             return true
         }
 
-        if(id == R.id.item4) {
-            intent = Intent(this, SettingsActivity::class.java)
-            startActivity(intent)
-        }
         return super.onOptionsItemSelected(item)
 
     }

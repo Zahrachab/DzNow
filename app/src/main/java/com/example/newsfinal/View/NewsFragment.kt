@@ -11,11 +11,6 @@ import com.example.newsfinal.Adapters.CategoriesAdapter
 import com.example.newsfinal.R
 
 
-
-
-
-
-
 class NewsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

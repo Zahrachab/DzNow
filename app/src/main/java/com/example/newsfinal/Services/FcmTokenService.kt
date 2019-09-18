@@ -11,6 +11,9 @@ import org.json.JSONObject
 
 class FcmTokenService (public var context: Context){
 
+    /**
+     * Envoyer le FCM token au service web pour sauvegarde
+     */
     public fun saveToken(token: String) {
         val path: String = "tokenPost.php"
 

@@ -32,7 +32,8 @@
         <ImageView
                 android:id="@+id/list_image"
                 android:layout_width="120dp"
-                android:layout_height="140dp"
+                android:layout_height="120dp"
+                android:layout_marginVertical="@dimen/activity_vertical_margin"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/list_categorie"
                 android:adjustViewBounds="true" />
@@ -57,8 +58,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@id/list_title"
+                android:layout_toLeftOf="@id/list_image"
                 android:layout_marginStart="@dimen/activity_horizontal_margin_2"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin_4"
+                android:layout_marginRight="8dp"
                 android:layout_marginTop="@dimen/activity_horizontal_margin_4"
                 android:layout_toStartOf="@id/list_image"
                 android:ellipsize="end"

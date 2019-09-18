@@ -5,11 +5,12 @@ import android.widget.TextView
 import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.example.newsfinal.Model.News
+import com.bumptech.glide.request.RequestOptions
+import com.example.newsfinal.Model.Article
 import com.example.newsfinal.R
 
 
-class ListNewsAdapter(private var list: List<News>?, val clickListener: (News) -> Unit) : RecyclerView.Adapter<ListNewsAdapter.NewsViewHolder>() {
+class ListNewsAdapter(private var list: List<Article>?, val clickListener: (Article) -> Unit) : RecyclerView.Adapter<ListNewsAdapter.NewsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -21,7 +22,7 @@ class ListNewsAdapter(private var list: List<News>?, val clickListener: (News) -
     }
 
 
-    fun refreshAdapter(listNews: List<News>) {
+    fun refreshAdapter(listNews: List<Article>) {
         list = listNews
         this.notifyDataSetChanged()
     }
@@ -49,14 +50,22 @@ class ListNewsAdapter(private var list: List<News>?, val clickListener: (News) -
 
 
 
-        fun bind(news: News, clickListener: (News) -> Unit) {
+        fun bind(news: Article, clickListener: (Article) -> Unit) {
             itemView.setOnClickListener { clickListener(news)}
             mTitleView?.text = news?.title
             mDescView?.text = news?.description
             mDateView?.text = news?.date
             mcategorieView?.text = news?.categorie
-            Glide.with(mImageView!!.context).load(news?.image).into(mImageView!!)
-            // mImageView?.setImageResource(R.drawable.imgnew1)
+            if (news?.image == ""  || news?.image == null) {
+
+                mImageView?.context?.let { Glide.with(it).load(R.drawable.al3).
+                    apply(RequestOptions().override(120, 120)).into(mImageView!!) }
+            } else {
+                mImageView?.context?.let { Glide.with(it).load(news?.image).
+                    apply(RequestOptions().override(120, 120)).into(mImageView!!) }
+
+                // mImageView?.setImageResource(R.drawable.imgnew1)
+            }
         }
     }
 

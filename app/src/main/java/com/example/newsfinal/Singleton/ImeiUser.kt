@@ -21,6 +21,9 @@ object ImeiUser {
 
     }
 
+    /**
+     * Récupérer l'IMEI
+     */
     fun getUniqueIMEIId(context: Context): String {
         try {
             val telephonyManager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager

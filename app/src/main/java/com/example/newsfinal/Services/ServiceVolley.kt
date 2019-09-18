@@ -11,9 +11,15 @@ import com.example.newsfinal.Singleton.BackendVolley
 import org.json.JSONObject
 
 class ServiceVolley : ServiceInterface {
+
     val TAG = ServiceVolley::class.java.simpleName
+    //url de base
     val basePath = "https://dznowapp.serveo.net/API-NEWS/api/"
 
+
+    /**
+     * Méthode post générique
+     */
     override fun post(path: String, params: JSONObject, completionHandler: (response: JSONObject?) -> Unit) {
         val jsonObjReq = object : JsonObjectRequest(Method.POST, basePath + path, params,
             Response.Listener<JSONObject> { response ->
@@ -35,6 +41,9 @@ class ServiceVolley : ServiceInterface {
     }
 
 
+    /**
+     * Méthode get générique
+     */
     override fun get(path: String, completionHandler: (response: String?) -> Unit) {
         val stringRequest = object : StringRequest(Method.GET, basePath + path,
             Response.Listener<String> { response ->

@@ -1,7 +1,5 @@
 package com.example.newsfinal.View
 
-import android.Manifest
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -13,13 +11,11 @@ import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import com.example.newsfinal.Adapters.ListNewsAdapter
 import com.example.newsfinal.Interface.ServiceInterface
-import com.example.newsfinal.Model.News
+import com.example.newsfinal.Model.Article
 import com.example.newsfinal.R
 import com.example.newsfinal.Services.FcmTokenService
-import com.example.newsfinal.Services.MessagingService
 import com.example.newsfinal.Services.ServiceVolley
 import com.example.newsfinal.Services.SharedPreferncesHelper
-import com.example.newsfinal.View.NewsDetail
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.gson.Gson
@@ -27,13 +23,13 @@ import com.google.gson.Gson
 
 import kotlinx.android.synthetic.main.fragment_list_news.*
 import org.json.JSONArray
-import org.json.JSONObject
 
 class ListNews : Fragment() {
 
-    private var listOfNews : List<News>? = listOf()
+    private var listOfNews : List<Article>? = listOf()
     private var mAdapter: ListNewsAdapter?= null
     private var categorie: Int = 0
+    private var start =0
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -80,7 +76,7 @@ class ListNews : Fragment() {
                 layoutManager = LinearLayoutManager(activity) as RecyclerView.LayoutManager?
                 adapter = ListNewsAdapter(
                     listOfNews,
-                    { partItem: News -> partItemClicked(partItem) })
+                    { partItem: Article -> partItemClicked(partItem) })
                 mAdapter = adapter as ListNewsAdapter
                 }
             getListNews(categorie)
@@ -108,19 +104,19 @@ class ListNews : Fragment() {
                     ctg = "4"
                 }
             }
-            path = "newsGetCategorie.php?categorie=" + ctg
+            path = "newsGetCategorie.php?categorie=$ctg"
         }
-        var list = listOf<News>()
+        var list = listOf<Article>()
         service.get(path) { response ->
             if(response != null && response != "error" && response!= "")
             {
                 val gson = Gson()
                 val jsonArray = JSONArray(response)
                 if (jsonArray != null) {
-                    val list = gson.fromJson(jsonArray.toString(), Array<News>::class.java)
+                    val list = gson.fromJson(jsonArray.toString(), Array<Article>::class.java)
                     if (list!= null && list?.size != 0) {
                         listOfNews= list.toMutableList()
-                        mAdapter?.refreshAdapter(listOfNews as MutableList<News>)
+                        mAdapter?.refreshAdapter(listOfNews as MutableList<Article>)
                     }
                 }
             }
@@ -128,7 +124,7 @@ class ListNews : Fragment() {
     }
 
 
-    private fun partItemClicked(partItem : News) {
+    private fun partItemClicked(partItem : Article) {
         Toast.makeText(this.context, "Titre: ${partItem.title}", Toast.LENGTH_LONG).show()
 
         // Launch second activity, pass part ID as string parameter

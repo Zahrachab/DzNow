@@ -8,7 +8,7 @@ import java.io.Serializable
 
 @Entity
 
-class News(
+class Article(
     @PrimaryKey(autoGenerate = true)
     @SerializedName("id") var id: Int? = null,
     var title: String  = "",

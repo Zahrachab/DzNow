@@ -60,8 +60,6 @@ class Accueil : AppCompatActivity(), View.OnClickListener {
             service.saveCompteInfos()
             val intent : Intent = Intent (this, NewsActivity::class.java)
             startActivity(intent)
-
-
         }
 
 
@@ -139,50 +137,6 @@ class Accueil : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun getUniqueIMEIId(context: Context): String {
-        try {
-            val telephonyManager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-            if (ActivityCompat.checkSelfPermission(
-                    context,
-                    Manifest.permission.READ_PHONE_STATE
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return ""
-            }
-            val imei = telephonyManager.deviceId
-            return if (imei != null && !imei.isEmpty()) {
-                imei
-            } else {
-                android.os.Build.SERIAL
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-
-        return "not_found"
-    }
-
-    private fun saveUserInfos() {
-        val path: String = "saveCompte.php"
-
-        val params = JSONObject()
-        params.put("uid", firebaseAuth?.currentUser?.uid)
-        params.put("imei",getUniqueIMEIId(this))
-        params.put("name", firebaseAuth?.currentUser?.displayName)
-
-        val service: ServiceInterface = ServiceVolley()
-        service.post(path, params) { response ->
-            Toast.makeText(this, "Modification avec succès", Toast.LENGTH_SHORT).show()
-
-        }
-    }
 
     companion object {
         // Google API Client object.

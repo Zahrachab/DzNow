@@ -4,10 +4,11 @@
       tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
         <item
-                android:id="@+id/nav_videos"
-                android:icon="@drawable/video"
-                android:title="Vidéos et audios"/>it
+                android:id="@+id/nav_accueil"
+                android:icon="@drawable/settings"
+                android:title="Accueil"/>
         <item
                 android:id="@+id/nav_options"
                 android:icon="@drawable/settings"

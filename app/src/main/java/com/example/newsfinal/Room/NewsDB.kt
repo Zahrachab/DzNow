@@ -2,13 +2,13 @@ package com.example.newsfinal.Room
 
 import android.arch.persistence.room.*
 import android.content.Context
-import com.example.newsfinal.Model.News
+import com.example.newsfinal.Model.Article
 
 
 
-@Database(entities = [News::class], version = 1)
+@Database(entities = [Article::class], version = 1)
 abstract class NewsDB : RoomDatabase() {
-    abstract fun articleDao(): NewsDao
+    abstract fun articleDao(): ArticleDao
 
     companion object {
         private var instance: NewsDB? = null

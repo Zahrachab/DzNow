@@ -31,11 +31,5 @@
 
     </item>
 
-    <item
-            android:id="@+id/item4"
-            android:title="@string/paramètres"
-            app:showAsAction="never">
-    </item>
-
 
 </menu>

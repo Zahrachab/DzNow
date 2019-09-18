@@ -14,10 +14,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.newsfinal.Interface.ServiceInterface
-import com.example.newsfinal.Services.FcmTokenService
-import com.example.newsfinal.Services.MessagingService
-import com.example.newsfinal.Services.ServiceVolley
-import com.example.newsfinal.Services.SharedPreferncesHelper
+import com.example.newsfinal.Services.*
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -59,10 +56,15 @@ class Accueil : AppCompatActivity(), View.OnClickListener {
         firebaseAuth = FirebaseAuth.getInstance()
         if(firebaseAuth?.currentUser != null)
         {
+            val service = GoogeInfosService(this)
+            service.saveCompteInfos()
             val intent : Intent = Intent (this, NewsActivity::class.java)
             startActivity(intent)
 
+
         }
+
+
         else {
             googleSignInButton = findViewById<View>(R.id.google_sign_in_button) as SignInButton
 

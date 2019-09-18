@@ -14,6 +14,7 @@ import android.util.Log
 import com.like.LikeButton
 import com.like.OnLikeListener
 import com.example.newsfinal.Room.*
+import com.example.newsfinal.Services.GoogeInfosService
 import kotlinx.android.synthetic.main.activity_news_detail.*
 
 
@@ -23,6 +24,7 @@ class NewsDetail : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news_detail)
+        val service = GoogeInfosService(this)
         val defaultSmsPackageName = Telephony.Sms.getDefaultSmsPackage(this)
 
         btn_share.setOnClickListener {
@@ -60,8 +62,10 @@ class NewsDetail : AppCompatActivity() {
 
 
             likeButton.setOnLikeListener(object : OnLikeListener {
+
                 override fun liked(likeButton: LikeButton) {
 
+                    service.saveSignetCompte(article?.id.toString())
                     dao?.saveNews(art)
 
                     AppTools.showToast(act, "Article archivé")
@@ -76,6 +80,7 @@ class NewsDetail : AppCompatActivity() {
                 }
 
                 override fun unLiked(likeButton: LikeButton) {
+                    service.deleteSignetCompte(article?.id.toString())
                     dao?.deleteNews(art)
                     AppTools.showToast(act, "Article supprimié")
                     dao?.getNews()?.forEach()
@@ -94,6 +99,10 @@ class NewsDetail : AppCompatActivity() {
 
 
 
+
+    }
+
+    fun saveArchivedArticle(idArticle: String) {
 
     }
 

@@ -1,7 +1,10 @@
 package com.example.newsfinal.View
 
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,12 +15,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.newsfinal.Adapters.ListNewsAdapter
+import com.example.newsfinal.Interface.ServiceInterface
 import com.example.newsfinal.Model.News
 import com.example.newsfinal.R
 
 import com.example.newsfinal.Room.AppTools
 import com.example.newsfinal.Room.NewsDB
 import com.example.newsfinal.Room.NewsDao
+import com.example.newsfinal.Services.ServiceVolley
+import com.google.firebase.auth.FirebaseAuth
 
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_archive.*
@@ -56,16 +62,21 @@ class SauvegaderFragment : Fragment() {
             mAdapter = adapter as ListNewsAdapter
         }
 
-
-
-
-        getListNews()
+        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
+        val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
+        if (isConnected) {
+            getListNewsFromServer()
+        } else {
+            getListNewsFromLocal()
+        }
     }
 
 
 
+    private fun ynchronise
 
-    private fun getListNews() {
+    private fun getListNewsFromLocal() {
 
 
         db = context?.let { NewsDB.getInstance(it) }
@@ -77,6 +88,30 @@ class SauvegaderFragment : Fragment() {
         }
 
     }
+
+
+    fun getListNewsFromServer() {
+        val firebase = FirebaseAuth.getInstance()
+        val service: ServiceInterface = ServiceVolley()
+        var path = "getArchivedArticles.php?uid="+ firebase.currentUser?.uid
+
+        var list = listOf<News>()
+        service.get(path) { response ->
+            if(response != null && response != "error" && response!= "")
+            {
+                val gson = Gson()
+                val jsonArray = JSONArray(response)
+                if (jsonArray != null) {
+                    val list = gson.fromJson(jsonArray.toString(), Array<News>::class.java)
+                    if (list!= null && list?.size != 0) {
+                        listOfNews= list.toMutableList()
+                        mAdapter?.refreshAdapter(listOfNews as MutableList<News>)
+                    }
+                }
+            }
+        }
+    }
+
 
 
     private fun partItemClicked(partItem : News) {

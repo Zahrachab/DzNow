@@ -28,12 +28,9 @@ import java.util.*
 
 class NewsDetail : AppCompatActivity(), TextToSpeech.OnInitListener {
 
-    private var tts: TextToSpeech? = null
-    private var input: String?=null
-    private var buttonSpeak: Button? = null
+   
 
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+  
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,41 +98,16 @@ class NewsDetail : AppCompatActivity(), TextToSpeech.OnInitListener {
             //fetch Records
 
             btnAddEvt.setOnClickListener {
-                /* input="John Doe at:2016-06-16 Notes:This is a test. " +
-                        "John Doe at:2017-07-17 Notes:This is a test." +
-                        "here an exemple of article. you can add event and" +
-                        "make your own configuration" +
-                        "it 's so simple.  " +
-                        "John Doe at:2018-08-18 Notes:This is a test." +
-                        "John Doe at:2019-09-19 Notes:This is a test. " +
-                        "here an exemple of article. you can add event and" +
-                        "make your own configuration" +
-                        "it 's so simple.  " +
-                        "John Doe at:2019-09-22 Notes:This is a test.  "+
-                        "here an exemple of article. you can add event and" +
-                        "make your own configuration" +
-                        "it 's so simple.  "*/
-                input=article!!.description
+               
+                var input=article!!.description
                 val intent = Intent(this, addEvtCal::class.java)
 
                 intent.putExtra("text", "$input" )
                 startActivity(intent)
             }
 
-            /*input="Il faut afficher de vrais articles d’actualité (les plus récents) provenant des sites algériens (français\n" +
-                    "et arabe)\n" +
-                    "- Ajouter la fonction sauvegarder article qui sauvegarde l’article (texte intégral) pour une lecture\n" +
-                    "ultérieure en mode offline\n" +
-                    "- Ajouter la fonction sites préférés et thèmes préférés. L’application scanne les sites préférés et\n" +
-                    "affiche une notification dès qu’un nouvel article concernant une des thématiques préférées est\n" +
-                    "publié."*/
-            input=article!!.description
-            text.text=input
-            buttonSpeak = this.btn_sound
-            buttonSpeak!!.isEnabled = false;
-            tts = TextToSpeech(this, this)
-
-            buttonSpeak!!.setOnClickListener { speakOut() }
+       
+            
 
 
     }
@@ -178,38 +150,9 @@ class NewsDetail : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
 
-    override fun onInit(status: Int) {
+    
 
-        if (status == TextToSpeech.SUCCESS) {
-            // set US English as language for tts
-            val result = tts!!.setLanguage(Locale.FRANCE)
-
-            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                Log.e("TTS","The Language specified is not supported!")
-            } else {
-                buttonSpeak!!.isEnabled = true
-            }
-
-        } else {
-            Log.e("TTS", "Initilization Failed!")
-        }
-
-    }
-
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun speakOut() {
-        val text = input
-        tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null,"")
-    }
-
-    public override fun onDestroy() {
-        // Shutdown TTS
-        if (tts != null) {
-            tts!!.stop()
-            tts!!.shutdown()
-        }
-        super.onDestroy()
-    }
+   
 
     companion object {
         var article : News? = null

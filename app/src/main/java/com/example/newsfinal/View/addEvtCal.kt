@@ -68,7 +68,7 @@ class addEvtCal : AppCompatActivity() {
 
                 var date = LocalDate.parse(listPat.get(i), DateTimeFormatter.ISO_DATE)
                 val beginTime = Calendar.getInstance()
-                beginTime.set(date.year, date.monthValue, date.dayOfMonth, 8, 30)
+                beginTime.set(date.year, date.monthValue-1, date.dayOfMonth, 8, 30)
                 val endTime = Calendar.getInstance()
                 endTime.set(2019, 10, 17, 8, 30)
 

@@ -27,28 +27,15 @@ class addEvtCal : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(com.example.newsfinal.R.layout.activity_add_evt_cal)
 
-        // var input: String? = intent.getStringExtra("text")
-        var input="John Doe at:2016-06-16 Notes:This is a test. " +
-                "John Doe at:2017-07-17 Notes:This is a test." +
-                "here an exemple of article. you can add event and" +
-                "make your own configuration" +
-                "it 's so simple.  " +
-                "John Doe at:2018-08-18 Notes:This is a test." +
-                "John Doe at:2019-09-19 Notes:This is a test. " +
-                "here an exemple of article. you can add event and" +
-                "make your own configuration" +
-                "it 's so simple.  " +
-                "John Doe at:2019-09-22 Notes:This is a test.  "+
-                "here an exemple of article. you can add event and" +
-                "make your own configuration" +
-                "it 's so simple.  "
+        var input: String? = intent.getStringExtra("text")
+        
         textShow.text=input
 
         var listPat = mutableListOf("")
         listPat.remove("")
         var find=false
 
-        val regex = " at:(\\d{4}-\\d{2}-\\d{2}) Notes:"
+        val regex = "(\\d{4}-\\d{2}-\\d{2})"
         val m = Pattern.compile(regex).matcher(input)
 
 
@@ -68,9 +55,7 @@ class addEvtCal : AppCompatActivity() {
 
                 var date = LocalDate.parse(listPat.get(i), DateTimeFormatter.ISO_DATE)
                 val beginTime = Calendar.getInstance()
-                beginTime.set(date.year, date.monthValue, date.dayOfMonth, 8, 30)
-                val endTime = Calendar.getInstance()
-                endTime.set(2019, 10, 17, 8, 30)
+                beginTime.set(date.year, date.monthValue-1, date.dayOfMonth, 8, 30)
 
                 var str=evtName.text
 

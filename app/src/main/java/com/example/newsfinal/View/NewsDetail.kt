@@ -100,15 +100,21 @@ class NewsDetail : AppCompatActivity(), TextToSpeech.OnInitListener {
             btnAddEvt.setOnClickListener {
                
                 var input=article!!.description
-                val intent = Intent(this, addEvtCal::class.java)
 
+                val intent = Intent(this, addEvtCal::class.java)
                 intent.putExtra("text", "$input" )
+                
                 startActivity(intent)
             }
 
-       
-            
 
+            input=article!!.description
+            text.text=input
+            buttonSpeak = this.btn_sound
+            buttonSpeak!!.isEnabled = false;
+            tts = TextToSpeech(this, this)
+
+            buttonSpeak!!.setOnClickListener { speakOut() }
 
     }
 

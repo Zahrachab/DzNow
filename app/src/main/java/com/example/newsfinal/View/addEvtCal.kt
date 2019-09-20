@@ -28,7 +28,6 @@ class addEvtCal : AppCompatActivity() {
         setContentView(com.example.newsfinal.R.layout.activity_add_evt_cal)
 
         var input: String? = intent.getStringExtra("text")
-       
         textShow.text=input
 
         var listPat = mutableListOf("")

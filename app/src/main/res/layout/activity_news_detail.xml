@@ -139,6 +139,26 @@
                                         android:layout_alignParentEnd="true"
                                 />
 
+
+                                <Button
+                                        android:id="@+id/btnAddEvt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/white"
+                                        android:text="dates"
+                                        android:layout_below="@id/likeButton"
+                                        android:layout_alignLeft="@id/likeButton"
+                                        android:textColor="@color/colorPrimary" />
+                                <Button
+                                        android:id="@+id/btn_share"
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
+                                        android:padding="16dp"
+                                        android:layout_below="@+id/title_article"
+                                        android:layout_marginHorizontal="200dp"
+                                        android:background="@drawable/share_icon"/>
+
+                               
                                 <TextView
                                         android:id="@+id/categorie_article"
                                         android:layout_width="wrap_content"
@@ -152,6 +172,7 @@
                                         android:background="@color/colorPrimary"
                                         android:textColor="@color/colorPrimaryDark"
                                         android:textSize="14sp"/>
+
 
                                 <TextView
                                         android:id="@+id/site_article"
@@ -168,17 +189,6 @@
                                         android:textSize="14sp"/>
 
 
-                                <Button
-                                        android:id="@+id/btn_share"
-                                        android:layout_width="25dp"
-                                        android:layout_height="25dp"
-                                        android:padding="16dp"
-                                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                                        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-                                        android:layout_alignTop="@id/likeButton"
-                                        android:layout_toLeftOf="@id/likeButton"
-                                        android:background="@drawable/share_icon"/>
-
                                 <LinearLayout
                                         android:id="@+id/lyt_date"
                                         android:layout_width="match_parent"
@@ -186,14 +196,16 @@
                                         android:layout_below="@+id/site_article"
                                         android:gravity="center_vertical"
                                         android:orientation="horizontal"
-                                        android:paddingBottom="3dp"
-                                        android:paddingTop="3dp">
+                                        android:paddingTop="3dp"
+                                        android:paddingBottom="3dp">
+
 
                                     <TextView
                                             android:id="@+id/date"
-                                            android:layout_width="100dp"
-                                            android:layout_height="wrap_content"
-                                            android:textColor="@color/colorText"/>
+                                            android:layout_width="164dp"
+                                            android:layout_height="43dp"
+                                            android:textColor="@color/colorText" />
+
 
 
 

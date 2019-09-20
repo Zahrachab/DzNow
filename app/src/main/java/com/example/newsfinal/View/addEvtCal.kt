@@ -35,7 +35,7 @@ class addEvtCal : AppCompatActivity() {
         listPat.remove("")
         var find=false
 
-        val regex = " at:(\\d{4}-\\d{2}-\\d{2}) Notes:"
+        val regex = "(\\d{4}-\\d{2}-\\d{2})"
         val m = Pattern.compile(regex).matcher(input)
 
 
@@ -56,8 +56,6 @@ class addEvtCal : AppCompatActivity() {
                 var date = LocalDate.parse(listPat.get(i), DateTimeFormatter.ISO_DATE)
                 val beginTime = Calendar.getInstance()
                 beginTime.set(date.year, date.monthValue-1, date.dayOfMonth, 8, 30)
-                //val endTime = Calendar.getInstance()
-                //endTime.set(2019, 10, 17, 8, 30)
 
                 var str=evtName.text
 

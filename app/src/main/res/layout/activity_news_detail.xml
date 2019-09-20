@@ -176,7 +176,8 @@
                                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                                         android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                                         android:layout_alignTop="@id/likeButton"
-                                        android:layout_toLeftOf="@id/likeButton"/>
+                                        android:layout_toLeftOf="@id/likeButton"
+                                        android:background="@drawable/share_icon"/>
 
                                 <LinearLayout
                                         android:id="@+id/lyt_date"

@@ -101,34 +101,15 @@ class NewsDetail : AppCompatActivity(), TextToSpeech.OnInitListener {
             //fetch Records
 
             btnAddEvt.setOnClickListener {
-                /* input="John Doe at:2016-06-16 Notes:This is a test. " +
-                        "John Doe at:2017-07-17 Notes:This is a test." +
-                        "here an exemple of article. you can add event and" +
-                        "make your own configuration" +
-                        "it 's so simple.  " +
-                        "John Doe at:2018-08-18 Notes:This is a test." +
-                        "John Doe at:2019-09-19 Notes:This is a test. " +
-                        "here an exemple of article. you can add event and" +
-                        "make your own configuration" +
-                        "it 's so simple.  " +
-                        "John Doe at:2019-09-22 Notes:This is a test.  "+
-                        "here an exemple of article. you can add event and" +
-                        "make your own configuration" +
-                        "it 's so simple.  "*/
+                
                 input=article!!.description
+                
                 val intent = Intent(this, addEvtCal::class.java)
-
                 intent.putExtra("text", "$input" )
+                
                 startActivity(intent)
             }
 
-            /*input="Il faut afficher de vrais articles d’actualité (les plus récents) provenant des sites algériens (français\n" +
-                    "et arabe)\n" +
-                    "- Ajouter la fonction sauvegarder article qui sauvegarde l’article (texte intégral) pour une lecture\n" +
-                    "ultérieure en mode offline\n" +
-                    "- Ajouter la fonction sites préférés et thèmes préférés. L’application scanne les sites préférés et\n" +
-                    "affiche une notification dès qu’un nouvel article concernant une des thématiques préférées est\n" +
-                    "publié."*/
             input=article!!.description
             text.text=input
             buttonSpeak = this.btn_sound

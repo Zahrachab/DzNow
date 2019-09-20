@@ -28,12 +28,9 @@ import java.util.*
 
 class NewsDetail : AppCompatActivity(), TextToSpeech.OnInitListener {
 
-    private var tts: TextToSpeech? = null
-    private var input: String?=null
-    private var buttonSpeak: Button? = null
+   
 
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+  
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,14 +98,15 @@ class NewsDetail : AppCompatActivity(), TextToSpeech.OnInitListener {
             //fetch Records
 
             btnAddEvt.setOnClickListener {
-                
-                input=article!!.description
-                
+               
+                var input=article!!.description
+
                 val intent = Intent(this, addEvtCal::class.java)
                 intent.putExtra("text", "$input" )
                 
                 startActivity(intent)
             }
+
 
             input=article!!.description
             text.text=input
@@ -117,7 +115,6 @@ class NewsDetail : AppCompatActivity(), TextToSpeech.OnInitListener {
             tts = TextToSpeech(this, this)
 
             buttonSpeak!!.setOnClickListener { speakOut() }
-
 
     }
 
@@ -159,38 +156,9 @@ class NewsDetail : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
 
-    override fun onInit(status: Int) {
+    
 
-        if (status == TextToSpeech.SUCCESS) {
-            // set US English as language for tts
-            val result = tts!!.setLanguage(Locale.FRANCE)
-
-            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                Log.e("TTS","The Language specified is not supported!")
-            } else {
-                buttonSpeak!!.isEnabled = true
-            }
-
-        } else {
-            Log.e("TTS", "Initilization Failed!")
-        }
-
-    }
-
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun speakOut() {
-        val text = input
-        tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null,"")
-    }
-
-    public override fun onDestroy() {
-        // Shutdown TTS
-        if (tts != null) {
-            tts!!.stop()
-            tts!!.shutdown()
-        }
-        super.onDestroy()
-    }
+   
 
     companion object {
         var article : News? = null
